@@ -1,0 +1,12 @@
+name = 'Live CV'
+license = 'MIT'
+licenselink = 'https://github.com/Clusravin/hugo-theme-live-cv/LICENSE'
+description = 'A online CV theme for Hugo'
+
+homepage = 'https://github.com/Clusravin/hugo-theme-live-cv'
+
+demosite = 'https://clusravin.github.io/hugo-theme-live-cv'
+
+[author]
+  name = 'Your name'
+  homepage = 'Your website'

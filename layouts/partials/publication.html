@@ -1,0 +1,2 @@
+{{ $doiurl := printf "%s%s" "http://doi.org/" .doi }}
+<p>{{ .citation }}{{ if ne .doi "" }} doi: <a href="{{ $doiurl | safeURL }}">{{ .doi }}</a>{{ end }}</p>

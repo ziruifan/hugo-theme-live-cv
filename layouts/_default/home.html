@@ -1,0 +1,115 @@
+{{ define "main" }}
+
+<div class="paper">
+    <div class="name-bar">
+        <h1>{{ .Site.Params.Name }}</h1>
+
+        {{ if .Site.Params.Contacts.Enable }}
+            <div class="contacts-list">
+                <ul>
+                    {{ range .Site.Params.Contacts.List }}
+                        <li><a class="contact" href="{{ .url | safeURL }}">{{ .info }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+        {{ end }}
+
+    </div>
+
+    <div class="details">
+        {{ with .Site.Params.Description }}
+            {{ if ne . "" }}
+                <div class="description"><p>{{ . }}</p></div>
+            {{ end }}
+        {{ end }}
+
+        {{ if .Site.Params.Contacts.Enable }}
+            <div class="interests">
+                <h2 class="section-heading">Research Interests</h2>
+                <ul>
+                    {{ range .Site.Params.Interests.List }}
+                        <li><p class="interest">{{ .interest }}</p></li>
+                    {{ end }}
+                </ul>
+            </div>
+        {{ end }}
+
+        {{ if .Site.Params.Education.Enable }}
+            <div class="education">
+                <h2 class="section-heading">Education</h2>
+                <ul>
+                    {{ range .Site.Params.Education.List }}
+                        <li>
+                            <p class="degree"><strong>{{ .degree }}</strong></p>
+                            <p class="institution">{{ .institution }}</p>
+                            <p class="period">{{ .start }} ~ {{ .end }}</p>
+                        </li>
+                    {{ end }}
+                </ul>
+            </div>
+        {{ end }}
+
+        {{ if .Site.Params.Projects.Enable }}
+            <div class="projects">
+                <h2 class="section-heading">Projects</h2>
+                {{ range .Site.Pages }}
+                    {{ if eq .Type "project" }}
+                        <div class="project">
+                            <p><strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong></p>
+                        </div>
+                    {{ end }}
+                {{ end }}
+            </div>
+        {{ end }}
+
+        {{ if .Site.Params.Publications.Enable }}
+            <div class="publications">
+                <h2 class="section-heading">Publications</h2>
+                <ul>
+                    {{ range .Site.Pages }}
+                        {{ if eq .Type "project" }}
+                            {{ range .Params.Publications.List }}
+                                <li>{{ partial "publication.html" . }}</li>
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+                </ul>
+            </div>
+        {{ end }}
+
+        {{ if .Site.Params.Posts.Enable }}
+            <div class="post">
+                <h2 class="section-heading">Posts</h2>
+                {{ range .Site.Pages }}
+                    {{ if eq .Type "post" }}
+                        <div class="post">
+                            <p><strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong></p>
+                        </div>
+                    {{ end }}
+                {{ end }}
+            </div>
+        {{ end }}
+
+        {{ if .Site.Params.People.Enable }}
+            <div class="people">
+                <h2 class="section-heading">People</h2>
+                <ul>
+                    <li><p class="person"><strong>Supervisor: </strong>{{ .Site.Params.People.Supervisor }}</p></li>
+                
+                    <li>
+                        <p class="person">
+                            {{ $person_count := 0 }}
+                            {{ range .Site.Params.People.Coauthors.List }}
+                                {{ if eq $person_count 0 }}<strong>Co-authors:</strong>{{ else }}, {{ end }}
+                                <a class="person" href="{{ .url | safeURL }}">{{ .name }}</a>
+                                {{ $person_count = add $person_count 1 }}
+                            {{ end }}
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        {{ end }}
+    </div>
+</div>
+
+{{ end }}

@@ -4,11 +4,17 @@
     <div class="name-bar">
         <h1>{{ .Site.Params.Name }}</h1>
 
-        {{ if .Site.Params.Contacts.Enable }}
+        {{ with .Site.Params.Contacts }}
             <div class="contacts-list">
                 <ul>
-                    {{ range .Site.Params.Contacts.List }}
-                        <li><a class="contact" href="{{ .url | safeURL }}">{{ .info }}</a></li>
+                    {{ range .List }}
+                        <li>
+                            {{ if .url }}
+                                <a href="{{ .url | safeURL }}">{{ .info }}</a>
+                            {{ else }}
+                                {{ .info }}
+                            {{ end }}
+                        </li>
                     {{ end }}
                 </ul>
             </div>
@@ -18,27 +24,25 @@
 
     <div class="details">
         {{ with .Site.Params.Description }}
-            {{ if ne . "" }}
-                <div class="description">{{ . }}</div>
-            {{ end }}
+            <div class="description">{{ . }}</div>
         {{ end }}
 
-        {{ if .Site.Params.Contacts.Enable }}
+        {{ with .Site.Params.Interests }}
             <div class="interests">
                 <h2 class="section-heading">Research Interests</h2>
                 <ul>
-                    {{ range .Site.Params.Interests.List }}
+                    {{ range .List }}
                         <li>{{ .interest }}</li>
                     {{ end }}
                 </ul>
             </div>
         {{ end }}
 
-        {{ if .Site.Params.Education.Enable }}
+        {{ with .Site.Params.Education }}
             <div class="education">
                 <h2 class="section-heading">Education</h2>
                 <ul>
-                    {{ range .Site.Params.Education.List }}
+                    {{ range .List }}
                         <li>
                             <strong>{{ .degree }}</strong>
                             {{ partial "period.html" . }}
@@ -52,8 +56,8 @@
         {{ if .Site.Params.Projects.Enable }}
             <div class="projects">
                 <h2 class="section-heading">Projects</h2>
-                {{ range .Site.Pages }}
-                    {{ if eq .Type "project" }}
+                {{ with .Site.GetPage "/projects" }}
+                    {{ range .Data.Pages }}
                         <div class="project">
                             <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
                             {{ partial "period.html" .Params }}
@@ -64,15 +68,13 @@
             </div>
         {{ end }}
 
-        {{ if .Site.Params.Publications.Enable }}
+        {{ with .Site.Params.Publications }}
             <div class="publications">
                 <h2 class="section-heading">Publications</h2>
                 <ul>
-                    {{ range .Site.Pages }}
-                        {{ if eq .Type "project" }}
-                            {{ range .Params.Publications.List }}
-                                <li>{{ partial "publication.html" . }}</li>
-                            {{ end }}
+                    {{ range .List }}
+                        {{ if .selected }}
+                            <li>{{ partial "publication.html" . }}</li>
                         {{ end }}
                     {{ end }}
                 </ul>
@@ -97,16 +99,20 @@
             </div>
         {{ end }}
 
-        {{ if .Site.Params.People.Enable }}
+        {{ with .Site.Params.People }}
             <div class="people">
                 <h2 class="section-heading">People</h2>
                 <ul>
-                    <li><strong>Supervisor: </strong>{{ .Site.Params.People.Supervisor }}</li>
+                    <li><strong>Supervisor: </strong>{{ .Supervisor }}</li>
                 
                     <li>
-                        {{ range $i, $person := .Site.Params.People.Coauthors.List }}
+                        {{ range $i, $person := .Coauthors.List }}
                             {{ if $i }}, {{ else }}<strong>Co-authors:</strong>{{ end }}
-                            <a class="person" href="{{ .url | safeURL }}">{{ .name }}</a>
+                            {{ if .url }}
+                                <a class="person" href="{{ .url | safeURL }}">{{ .name }}</a>
+                            {{ else }}
+                                {{ .name }}
+                            {{ end }}
                         {{ end }}
                     </li>
                 </ul>

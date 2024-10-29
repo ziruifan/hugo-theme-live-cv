@@ -1,0 +1,5 @@
+{{ if .Truncated }}
+    <p>{{ strings.TrimRight ". " ( chomp ( .Summary | plainify ) ) }}...</p>
+{{ else }}
+    {{ .Summary }}
+{{ end }}

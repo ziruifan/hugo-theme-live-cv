@@ -19,7 +19,7 @@
     <div class="details">
         {{ with .Site.Params.Description }}
             {{ if ne . "" }}
-                <div class="description"><p>{{ . }}</p></div>
+                <div class="description">{{ . }}</div>
             {{ end }}
         {{ end }}
 
@@ -28,7 +28,7 @@
                 <h2 class="section-heading">Research Interests</h2>
                 <ul>
                     {{ range .Site.Params.Interests.List }}
-                        <li><p class="interest">{{ .interest }}</p></li>
+                        <li>{{ .interest }}</li>
                     {{ end }}
                 </ul>
             </div>
@@ -40,9 +40,9 @@
                 <ul>
                     {{ range .Site.Params.Education.List }}
                         <li>
-                            <p class="degree"><strong>{{ .degree }}</strong></p>
-                            <p class="institution">{{ .institution }}</p>
-                            <p class="period">{{ .start }} ~ {{ .end }}</p>
+                            <strong>{{ .degree }}</strong>
+                            {{ partial "period.html" . }}
+                            {{ .institution }}
                         </li>
                     {{ end }}
                 </ul>
@@ -55,7 +55,9 @@
                 {{ range .Site.Pages }}
                     {{ if eq .Type "project" }}
                         <div class="project">
-                            <p><strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong></p>
+                            <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
+                            {{ partial "period.html" .Params }}
+                            {{ partial "summary.html" . }}
                         </div>
                     {{ end }}
                 {{ end }}
@@ -78,13 +80,18 @@
         {{ end }}
 
         {{ if .Site.Params.Posts.Enable }}
-            <div class="post">
+            <div class="posts">
                 <h2 class="section-heading">Posts</h2>
-                {{ range .Site.Pages }}
-                    {{ if eq .Type "post" }}
+                {{ with .Site.GetPage "/posts" }}
+                    {{ range first 5 (sort .Data.Pages "Date" "desc")}}
                         <div class="post">
-                            <p><strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong></p>
+                            <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
+                            <time>{{ .Date | time.Format ":date_long" }}</time>
+                            {{ partial "summary.html" . }}
                         </div>
+                    {{ end }}
+                    {{ if gt (len .Pages) 5 }}
+                    <p>...</p>
                     {{ end }}
                 {{ end }}
             </div>
@@ -94,15 +101,13 @@
             <div class="people">
                 <h2 class="section-heading">People</h2>
                 <ul>
-                    <li><p class="person"><strong>Supervisor: </strong>{{ .Site.Params.People.Supervisor }}</p></li>
+                    <li><strong>Supervisor: </strong>{{ .Site.Params.People.Supervisor }}</li>
                 
                     <li>
-                        <p class="person">
-                            {{ range $i, $person := .Site.Params.People.Coauthors.List }}
-                                {{ if $i }}, {{ else }}<strong>Co-authors:</strong>{{ end }}
-                                <a class="person" href="{{ .url | safeURL }}">{{ .name }}</a>
-                            {{ end }}
-                        </p>
+                        {{ range $i, $person := .Site.Params.People.Coauthors.List }}
+                            {{ if $i }}, {{ else }}<strong>Co-authors:</strong>{{ end }}
+                            <a class="person" href="{{ .url | safeURL }}">{{ .name }}</a>
+                        {{ end }}
                     </li>
                 </ul>
             </div>

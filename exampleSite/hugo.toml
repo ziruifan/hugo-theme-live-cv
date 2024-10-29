@@ -1,0 +1,93 @@
+baseURL = 'https://blog.iosm.edu/rryder/'
+languageCode = 'en'
+title = 'Raymond Ryder'
+theme = 'hugo-theme-live-cv'
+copyright = "Copyright © 2024 Raymond Ryder."
+
+[params]
+    name = 'Raymond Ryder'
+    description = 'Raymond Ryder is a PhD candidate in the Department of Arcane Studies at the Institute for Occult Sciences and Mysticism, specializing in advanced curse mechanics, forbidden rituals, and interdimensional entities. His research delves into the ethical boundaries and potential applications of high-level hexes, seeking to expand responsible practices within dark arts. Raymond holds a Master of Dark Arts and Esoteric Knowledge from Sorcerum University and has earned accolades for his groundbreaking containment protocols for cursed objects. Known for his meticulous and fearless approach, Raymond is dedicated to advancing the field of dark arts with a balance of caution and innovation.'
+
+    [params.contacts]
+        [[params.contacts.list]]
+            info = 'r.ryder@iosm.edu'
+            url = 'mailto:r.ryder@iosm.edu'
+        [[params.contacts.list]]
+            info = '(617) 555-1313'
+            url = 'tel:6175551313'
+        [[params.contacts.list]]
+            info = 'Room 313, Eldritch Hall, 523 Shadowveil Avenue, Mysthaven, MA 04213'
+            url = 'https://maps.app.goo.gl/iH7mmSefUuxYeoid8'
+    
+    [params.interests]
+        [[params.interests.list]]
+            interest = 'Curse Mechanics and Advanced Hexes'
+        [[params.interests.list]]
+            interest = 'Forbidden Rituals and Ethical Boundaries'
+        [[params.interests.list]]
+            interest = 'Interdimensional Entities and Dark Conjurations'
+
+    [params.education]
+        [[params.education.list]]
+            institution = 'Sorcerum University'
+            degree = 'Master of Dark Arts and Esoteric Knowledge'
+            start = '2017'
+            end = '2019'
+        [[params.education.list]]
+            institution = 'Eldergrove Academy'
+            degree = 'Bachelor of Arcane Practices and Ritual Theory'
+            start = '2013'
+            end = '2017'
+    
+    [params.projects]
+        enable = true
+
+    [params.publications]
+        [[params.publications.list]]
+            id = 'shadow2023'
+            selected = true
+            citation = 'Ryder, R., Thornwell, E., & Elyndris, M. “Shadows Unseen: Exploring Ethical Implications in High-Level Hexes.” Journal of Occult Ethics and Magical Ethics, 2023.'
+            doi = '55.1186/1471-2588-12-113'
+        [[params.publications.list]]
+            id = 'conjured2023'
+            selected = true
+            citation = 'Ryder, R., & Varrow, S. “Conjured Allies: Examining Protective Applications of Summoned Entities.” Occult Sciences Review, 2023.'
+            doi = '55.6758/3276-4347-22-445'
+        [[params.publications.list]]
+            id = 'hex2022'
+            selected = true
+            citation = 'Ryder, R., & Nightshade, E. “Hex Transference and Nullification: A Study on Curse Transmission Mediums.” Arcane Horizons: Studies in Forbidden Knowledge, 2022.'
+            doi = '55.8494/5725-2364-56-542'
+        [[params.publications.list]]
+            id = 'veiled2021'
+            selected = true
+            citation = 'Ryder, R., & Elyndris, M. “Veiled Entities: Demonic Invocation and Its Risks.” Arcane Horizons: Studies in Forbidden Knowledge, 2021'
+            doi = '55.3547/8972-2238-23-594'
+        [[params.publications.list]]
+            id = 'securing2021'
+            selected = true
+            citation = 'Ryder, R. “Securing the Shadows: Containment Protocols for Cursed Artifacts.” Journal of Dark Relic Studies, 2021.'
+            doi = '55.6978/5795-5738-2211-333'
+        [[params.publications.list]]
+            id = 'beyond2020'
+            selected = true
+            citation = 'Ryder, R. “Beyond the Visible: How Dark Matter Affects Ancient Hexes.” Occult Sciences Review, 2020.'
+            doi = '55.3454/2687-2545-83-234'
+    
+    [params.posts]
+        enable = true
+
+    [params.people]        
+        supervisor = 'Prof. Morganna Elyndris'
+
+        [[params.people.coauthors.list]]
+            name = 'Morganna Elyndris'
+            url = 'https://blog.iosm.edu/melyndris/'
+        [[params.people.coauthors.list]]
+            name = 'Edrick Thornwell'
+            url = 'https://blog.iosm.edu/ethornwell/'
+        [[params.people.coauthors.list]]
+            name = 'Selene Varrow'
+        [[params.people.coauthors.list]]
+            name = 'Elara Nightshade'
+            url = 'https://blog.iosm.edu/enightshade/'

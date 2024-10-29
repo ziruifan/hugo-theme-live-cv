@@ -57,7 +57,7 @@
             <div class="projects">
                 <h2 class="section-heading">Projects</h2>
                 {{ with .Site.GetPage "/projects" }}
-                    {{ range .Data.Pages }}
+                    {{ range sort .Data.Pages "Params.end" "desc" }}
                         <div class="project">
                             <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
                             {{ partial "period.html" .Params }}

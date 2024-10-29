@@ -1,15 +1,15 @@
 {{ if .Params.Publications }}
-<div class="publications">
-    <h2>Publications</h2>
-    <ul>
-        {{ $publications := .Params.Publications }}
-        {{ range $source := .Site.Params.Publications.List }}
-            {{ range $target := $publications }}
-                {{ if eq $source.id $target }}
-                    <li>{{ partial "publication.html" $source }}</li>
+    <div class="publications">
+        <h2>Publications</h2>
+        <ul>
+            {{ $publications := .Params.Publications }}
+            {{ range $source := .Site.Params.Publications.List }}
+                {{ range $target := $publications }}
+                    {{ if eq $source.id $target }}
+                        <li>{{ partial "publication.html" $source }}</li>
+                    {{ end }}
                 {{ end }}
             {{ end }}
-        {{ end }}
-    </ul>
-</div>
+        </ul>
+    </div>
 {{ end }}

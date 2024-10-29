@@ -43,6 +43,8 @@ copyright = "Copyright © 2024 Raymond Ryder."
         enable = true
 
     [params.publications]
+        name = 'Ryder, R.'
+
         [[params.publications.list]]
             id = 'shadow2023'
             selected = true

@@ -3,7 +3,7 @@ type = "post"
 title = "The Ethical Summoner: Navigating Responsibility in Dark Arts"
 date = 2023-10-13
 categories = ["conjuration and summoning"]
-tags = ["summoning", "ethics", "sontainment"]
+tags = ["summoning", "ethics", "containment"]
 +++
 
 Working in summoning and conjuration often feels like walking a razor's edge. The thrill of channeling powerful, ancient forces is undeniable, but so too is the responsibility that comes with it. In my recent research on conjured entities, I’ve realized that ethical practices must adapt to the changing landscape of dark arts. This isn’t about wielding power but about understanding its true scope and ramifications.

@@ -55,7 +55,7 @@
 
         {{ if .Site.Params.Projects.Enable }}
             <div class="projects">
-                <h2 class="section-heading">Projects</h2>
+                <h2 class="section-heading"><a href="{{ .Permalink }}projects/">Projects</a></h2>
                 {{ with .Site.GetPage "/projects" }}
                     {{ range sort .Data.Pages "Params.end" "desc" }}
                         <div class="project">
@@ -83,9 +83,9 @@
 
         {{ if .Site.Params.Posts.Enable }}
             <div class="posts">
-                <h2 class="section-heading">Posts</h2>
+                <h2 class="section-heading"><a href="{{ .Permalink }}posts/">Posts</a></h2>
                 {{ with .Site.GetPage "/posts" }}
-                    {{ range first 5 (sort .Data.Pages "Date" "desc")}}
+                    {{ range first 3 (sort .Data.Pages "Date" "desc")}}
                         <div class="post">
                             <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
                             <time>{{ .Date | time.Format ":date_long" }}</time>

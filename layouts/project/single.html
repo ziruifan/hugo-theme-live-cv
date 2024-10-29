@@ -1,7 +1,11 @@
 {{ define "main" }}
   <h1>{{ .Title }}</h1>
   
-  <time>{{ .Params.Start }} ~ {{ .Params.End }}</time>
+  {{ if eq .Params.Start .Params.End }}
+    <time>{{ .Params.End }}</time>
+  {{ else }}
+    <time>{{ .Params.Start }} ~ {{ .Params.End }}</time>
+  {{ end }}
   {{ partial "tags.html" . }}
 
   {{ .Content }}

@@ -1,11 +1,9 @@
 {{ if .Params.Tags }}
     <div class="tags">
         <p>
-            {{ $tag_count := 0 }}
-            {{ range (.GetTerms "tags") }}
-                {{ if eq $tag_count 0 }}Tags:{{ else }}, {{ end }}
+            {{ range $i, $tag := (.GetTerms "tags") }}
+                {{ if $i }}, {{ else }}Tags: {{ end }}
                 <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-                {{ $tag_count = add $tag_count 1 }}
             {{ end }}
         </p>
     </div>

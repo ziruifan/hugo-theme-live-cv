@@ -58,7 +58,7 @@
                 <h2 class="section-heading"><a href="{{ .Permalink }}projects/">Projects</a></h2>
                 {{ with .Site.GetPage "/projects" }}
                     {{ range sort .Data.Pages "Params.end" "desc" }}
-                        <div class="project">
+                        <div class="entry">
                             <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
                             {{ partial "period.html" .Params }}
                             {{ partial "summary.html" . }}
@@ -86,7 +86,7 @@
                 <h2 class="section-heading"><a href="{{ .Permalink }}posts/">Posts</a></h2>
                 {{ with .Site.GetPage "/posts" }}
                     {{ range first 3 (sort .Data.Pages "Date" "desc")}}
-                        <div class="post">
+                        <div class="entry">
                             <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
                             <time>{{ .Date | time.Format ":date_long" }}</time>
                             {{ partial "summary.html" . }}
@@ -102,19 +102,16 @@
         {{ with .Site.Params.People }}
             <div class="people">
                 <h2 class="section-heading">People</h2>
-                <ul>
-                    <li><strong>Supervisor: </strong>{{ .Supervisor }}</li>
-                
-                    <li>
-                        {{ range $i, $person := .Coauthors.List }}
-                            {{ if $i }}, {{ else }}<strong>Co-authors:</strong>{{ end }}
-                            {{ if .url }}
-                                <a class="person" href="{{ .url | safeURL }}">{{ .name }}</a>
-                            {{ else }}
-                                {{ .name }}
-                            {{ end }}
+                    <strong>Supervisor: </strong>{{ .Supervisor }}
+                    <br/>
+                    {{ range $i, $person := .Coauthors.List }}
+                        {{ if $i }}, {{ else }}<strong>Co-authors:</strong>{{ end }}
+                        {{ if .url }}
+                            <a class="person" href="{{ .url | safeURL }}">{{ .name }}</a>
+                        {{ else }}
+                            {{ .name }}
                         {{ end }}
-                    </li>
+                    {{ end }}
                 </ul>
             </div>
         {{ end }}

@@ -2,7 +2,13 @@
   <h1>{{ .Title }}</h1>
   {{ .Content }}
   {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
+    {{ if eq .Type "project" }}
+      <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
+      {{ partial "period.html" .Params }}
+    {{ else if eq .Type "post" }}
+      <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
+      <time>{{ .Date | time.Format ":date_long" }}</time>
+    {{ end }}
+    {{ partial "summary.html" . }}
   {{ end }}
 {{ end }}

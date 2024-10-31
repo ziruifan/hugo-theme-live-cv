@@ -58,7 +58,7 @@ copyright = "Copyright © 2024 Raymond Ryder."
         [[params.publications.list]]
             id = 'hex2022'
             selected = true
-            citation = 'Ryder, R., & Nightshade, E. “Hex Transference and Nullification: A Study on Curse Transmission Mediums.” Arcane Horizons: Studies in Forbidden Knowledge, 2022.'
+            citation = 'Nightshade, E., & Ryder, R. “Hex Transference and Nullification: A Study on Curse Transmission Mediums.” Arcane Horizons: Studies in Forbidden Knowledge, 2022.'
             doi = '55.8494/5725-2364-56-542'
         [[params.publications.list]]
             id = 'veiled2021'

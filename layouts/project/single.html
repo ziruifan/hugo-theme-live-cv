@@ -1,4 +1,6 @@
 {{ define "main" }}
+
+<div class="paper">
   <h1>{{ .Title }}</h1>
 
   {{ partial "period.html" .Params }}
@@ -6,4 +8,6 @@
 
   {{ .Content }}
   {{ partial "publications.html" . }}
+</div>
+
 {{ end }}

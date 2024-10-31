@@ -1,4 +1,6 @@
 {{ define "main" }}
+
+<div class="paper">
   <h1>{{ .Title }}</h1>
   {{ .Content }}
   {{ range .Pages }}
@@ -11,4 +13,6 @@
     {{ end }}
     {{ partial "summary.html" . }}
   {{ end }}
+</div>
+
 {{ end }}

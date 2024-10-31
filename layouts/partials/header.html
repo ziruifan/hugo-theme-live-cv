@@ -1,19 +1,23 @@
-{{ $url := replace .Permalink (printf "%s" .Site.BaseURL) "" }}
-{{ $.Scratch.Add "path" .Site.BaseURL }}
-<a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a> 
-{{ range $index, $name := split $url "/" }}
-    {{ $.Scratch.Add "path" $name }}
-    {{ if ne $name "" }}
-        {{ $basename := index (split . ".") 0 }}
-        > <a href='{{ $.Scratch.Get "path" | absURL }}'>{{ strings.Title (replaceRE "-" " " $basename) }}</a>
-        {{ $.Scratch.Add "path" "/" }}
+<div class="navigation">
+    {{ $url := replace .Permalink (printf "%s" .Site.BaseURL) "" }}
+    {{ $.Scratch.Add "path" .Site.BaseURL }}
+    <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a> 
+    {{ range $index, $name := split $url "/" }}
+        {{ $.Scratch.Add "path" $name }}
+        {{ if ne $name "" }}
+            {{ $basename := index (split . ".") 0 }}
+            > <a href='{{ $.Scratch.Get "path" | absURL }}'>{{ strings.Title (replaceRE "-" " " $basename) }}</a>
+            {{ $.Scratch.Add "path" "/" }}
+        {{ end }}
     {{ end }}
-{{ end }}
+</div>
 
-{{ $pages := .CurrentSection.Pages.ByWeight.Reverse }}
-{{ with $pages.Prev . }}
-    <a href="{{ .RelPermalink }}">Previous</a>
-{{ end }}
-{{ with $pages.Next . }}
-    <a href="{{ .RelPermalink }}">Next</a>
-{{ end }}
+<div class="controls">
+    {{ $pages := .CurrentSection.Pages.ByWeight.Reverse }}
+    {{ with $pages.Prev . }}
+        <a href="{{ .RelPermalink }}">&lt; Previous</a>
+    {{ end }}
+    {{ with $pages.Next . }}
+        <a href="{{ .RelPermalink }}">Next &gt;</a>
+    {{ end }}
+</div>

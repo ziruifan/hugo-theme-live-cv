@@ -2,7 +2,7 @@ baseURL = 'https://blog.iosm.edu/rryder/'
 languageCode = 'en'
 title = 'Raymond Ryder'
 theme = 'hugo-theme-live-cv'
-copyright = "Copyright © 2024 Raymond Ryder."
+copyright = "Copyright © 2024 Raymond Ryder"
 
 [params]
     name = 'Raymond Ryder'
@@ -10,14 +10,14 @@ copyright = "Copyright © 2024 Raymond Ryder."
 
     [params.contacts]
         [[params.contacts.list]]
-            info = 'r.ryder@iosm.edu'
-            url = 'mailto:r.ryder@iosm.edu'
+            info = 'Room 313, Eldritch Hall, 523 Shadowveil Avenue, Mysthaven, MA 04213'
+            url = 'https://maps.app.goo.gl/iH7mmSefUuxYeoid8'
         [[params.contacts.list]]
             info = '(617) 555-1313'
             url = 'tel:6175551313'
         [[params.contacts.list]]
-            info = 'Room 313, Eldritch Hall, 523 Shadowveil Avenue, Mysthaven, MA 04213'
-            url = 'https://maps.app.goo.gl/iH7mmSefUuxYeoid8'
+            info = 'r.ryder@iosm.edu'
+            url = 'mailto:r.ryder@iosm.edu'
     
     [params.interests]
         [[params.interests.list]]

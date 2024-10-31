@@ -5,18 +5,16 @@
         <h1>{{ .Site.Params.Name }}</h1>
 
         {{ with .Site.Params.Contacts }}
-            <div class="contacts-list">
-                <ul>
-                    {{ range .List }}
-                        <li>
-                            {{ if .url }}
-                                <a href="{{ .url | safeURL }}">{{ .info }}</a>
-                            {{ else }}
-                                {{ .info }}
-                            {{ end }}
-                        </li>
-                    {{ end }}
-                </ul>
+            <div class="contacts">
+                {{ range .List }}
+                    <div class="contact">
+                        {{ if .url }}
+                            <a href="{{ .url | safeURL }}">{{ .info }}</a>
+                        {{ else }}
+                            {{ .info }}
+                        {{ end }}
+                    </div>
+                {{ end }}
             </div>
         {{ end }}
 
@@ -44,8 +42,10 @@
                 <ul>
                     {{ range .List }}
                         <li>
-                            <strong>{{ .degree }}</strong>
-                            {{ partial "period.html" . }}
+                            <div class="metadata">
+                                <strong>{{ .degree }}</strong>
+                                {{ partial "period.html" . }}
+                            </div>
                             {{ .institution }}
                         </li>
                     {{ end }}
@@ -59,8 +59,10 @@
                 {{ with .Site.GetPage "/projects" }}
                     {{ range sort .Data.Pages "Params.end" "desc" }}
                         <div class="entry">
-                            <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
-                            {{ partial "period.html" .Params }}
+                            <div class="metadata">
+                                <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
+                                {{ partial "period.html" .Params }}
+                            </div>
                             {{ partial "summary.html" . }}
                         </div>
                     {{ end }}
@@ -87,8 +89,10 @@
                 {{ with .Site.GetPage "/posts" }}
                     {{ range first 3 (sort .Data.Pages "Date" "desc")}}
                         <div class="entry">
-                            <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
-                            <time>{{ .Date | time.Format ":date_long" }}</time>
+                            <div class="metadata">
+                                <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
+                                <time>{{ .Date | time.Format ":date_long" }}</time>
+                            </div>
                             {{ partial "summary.html" . }}
                         </div>
                     {{ end }}

@@ -1,4 +1,6 @@
-{{ .Summary }}
-{{ if .Truncated }}
-    <p>...</p>
-{{ end }}
+<div class="summary">
+    {{ .Summary }}
+    {{ if .Truncated }}
+        <br/>...
+    {{ end }}
+</div>

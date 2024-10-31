@@ -35,13 +35,7 @@ a:hover {
   text-decoration: underline;
 }
 
-header {
-  color: var(--secondary-text-color);
-  display: flex;
-  justify-content: space-between;
-}
-
-footer {
+header, footer {
   color: var(--secondary-text-color);
   display: flex;
   justify-content: space-between;
@@ -93,4 +87,31 @@ header div a, footer div a {
 .summary {
   margin-top: 0.5rem;
   margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 900px) {
+  header, footer {
+    display: block;
+  }
+
+  .navigation, .copyright {
+    margin: 0 2rem 0.5rem 2rem;
+  }
+
+  .controls {
+    margin: 0 1.5rem;
+  }
+
+  .attribution {
+    margin: 0 2rem;
+  }
+
+  .metadata {
+    display: block;
+  }
+
+  .metadata time {
+    display: block;
+    text-align: left;
+  }
 }

@@ -46,6 +46,7 @@ a:hover {
 .paper {
   background-color: #fff;
   box-shadow: 0 0 3rem #999;
+  min-height: 1050px;
   margin: 2rem auto;
   padding: 4rem;
 }

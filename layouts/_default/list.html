@@ -4,14 +4,15 @@
   <h1>{{ .Title }}</h1>
   {{ .Content }}
   {{ range .Pages }}
-    {{ if eq .Type "project" }}
+    <div class="list-item">
       <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
-      {{ partial "period.html" .Params }}
-    {{ else if eq .Type "post" }}
-      <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
-      <time>{{ .Date | time.Format ":date_long" }}</time>
-    {{ end }}
-    {{ partial "summary.html" . }}
+      {{ if eq .Type "project" }}
+        {{ partial "period.html" .Params }}
+      {{ else if eq .Type "post" }}
+        <time>{{ .Date | time.Format ":date_long" }}</time>
+      {{ end }}
+      {{ partial "summary.html" . }}
+    </div>
   {{ end }}
 </div>
 

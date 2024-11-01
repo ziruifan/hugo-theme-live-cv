@@ -8,7 +8,7 @@ copyright = "Copyright © 2024 Evander Grimveil"
 # Remove any unnecessary items (e.g., unavailable URLs).
 [params]
     name = 'Evander Grimveil'
-    description = 'Evander Grimveil is a PhD candidate in the Department of Arcane Studies at the Institute for Occult Sciences and Mysticism, specializing in advanced curse mechanics, forbidden rituals, and interdimensional entities. His research delves into the ethical boundaries and potential applications of high-level hexes, seeking to expand responsible practices within dark arts. Raymond holds a Master of Dark Arts and Esoteric Knowledge from Sorcerum University and has earned accolades for his groundbreaking containment protocols for cursed objects. Known for his meticulous and fearless approach, Raymond is dedicated to advancing the field of dark arts with a balance of caution and innovation.'
+    description = 'Evander Grimveil is a PhD candidate in the Department of Arcane Studies at the Institute for Occult Sciences and Mysticism, specializing in advanced curse mechanics, forbidden rituals, and interdimensional entities. His research delves into the ethical boundaries and potential applications of high-level hexes, seeking to expand responsible practices within dark arts. Evander holds a Master of Dark Arts and Esoteric Knowledge from Sorcerum University and has earned accolades for his groundbreaking containment protocols for cursed objects. Known for his meticulous and fearless approach, Evander is dedicated to advancing the field of dark arts with a balance of caution and innovation.'
 
     [params.contacts]
         [[params.contacts.list]]

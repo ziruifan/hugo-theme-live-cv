@@ -102,6 +102,10 @@ header div a, footer div a {
     display: block;
   }
 
+  .paper {
+    padding: 2rem 2rem 3rem 2rem;
+  }
+
   .navigation, .copyright {
     margin: 0 2rem 0.5rem 2rem;
   }

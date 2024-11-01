@@ -5,6 +5,7 @@ tags = ["rites", "ethics"]
 [params]
     start = 2019
     end = 2024
+    abstract = "- Studied ethical implications and potential restorative uses of high-level curses. \n - Developed new containment protocols for volatile curses, improving safety in dark magic deployment. \n - Investigated hex transmission, contributing to advancements in nullifying charms for curse suppression."
     publications = ["beyond2020", "hex2022", "shadow2023"]
 +++
 

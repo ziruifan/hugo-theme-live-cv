@@ -1,0 +1,5 @@
+<div class="abstract">
+    {{ if .Params.abstract }}
+        {{ .Params.abstract | .Page.RenderString }}
+    {{ end }}
+</div>

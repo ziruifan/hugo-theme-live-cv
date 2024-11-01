@@ -5,6 +5,7 @@ tags = ["artifact"]
 [params]
     start = 2021
     end = 2021
+    abstract = "- Developed secure containment protocols for high-risk, hex-bound artifacts to prevent accidental activation. \n - Analyzed stability factors affecting cursed artifacts, optimizing handling and transport procedures. \n - Studied interactions between cursed artifacts and external magical energies to guide safe storage practices."
     publications = ["securing2021"]
 +++
 

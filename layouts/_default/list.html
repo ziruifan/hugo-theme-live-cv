@@ -13,7 +13,11 @@
           <time>{{ .Date | time.Format ":date_long" }}</time>
         {{ end }}
       </div>
-      {{ partial "summary.html" . }}
+      {{ if eq .Type "project" }}
+        {{ partial "abstract.html" . }}
+      {{ else }}
+        {{ partial "summary.html" . }}
+      {{ end }}
     </div>
   {{ end }}
 </div>

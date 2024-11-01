@@ -63,7 +63,7 @@
                                 <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
                                 {{ partial "period.html" .Params }}
                             </div>
-                            {{ partial "summary.html" . }}
+                            {{ partial "abstract.html" . }}
                         </div>
                     {{ end }}
                 {{ end }}
@@ -87,17 +87,16 @@
             <div class="posts">
                 <h2 class="section-heading"><a href="{{ .Permalink }}posts/">Posts</a></h2>
                 {{ with .Site.GetPage "/posts" }}
-                    {{ range first 3 (sort .Data.Pages "Date" "desc")}}
+                    {{ range first site.Params.Posts.Latest (sort .Data.Pages "Date" "desc")}}
                         <div class="entry">
                             <div class="metadata">
                                 <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
                                 <time>{{ .Date | time.Format ":date_long" }}</time>
                             </div>
-                            {{ partial "summary.html" . }}
                         </div>
                     {{ end }}
-                    {{ if gt (len .Pages) 5 }}
-                    <p>...</p>
+                    {{ if gt (len .Pages) site.Params.Posts.Latest }}
+                        ...
                     {{ end }}
                 {{ end }}
             </div>

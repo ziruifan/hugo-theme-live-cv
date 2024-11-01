@@ -6,5 +6,6 @@ tags = []
 [params]
     start = {{ dateFormat "2006" .Date }}
     end = {{ dateFormat "2006" .Date }}
+    abstract = ""
     publications = []
 +++

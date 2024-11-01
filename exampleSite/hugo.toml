@@ -85,6 +85,7 @@ copyright = "Copyright © 2024 Raymond Ryder"
     # Post content is located in /content/posts
     [params.posts]
         enable = true
+        latest = 3
 
     [params.people]        
         supervisor = 'Prof. Morganna Elyndris'

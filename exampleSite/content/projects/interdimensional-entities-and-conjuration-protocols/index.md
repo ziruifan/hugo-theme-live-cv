@@ -5,6 +5,7 @@ tags = ["ethics"]
 [params]
     start = 2020
     end = 2023
+    abstract = "- Created protocols for stable conjuration environments and containment fields for summoned entities. \n - Explored ethical frameworks for responsible summoning practices, balancing control with entity autonomy."
     publications = ["veiled2021", "conjured2023"]
 +++
 

@@ -4,6 +4,8 @@ title = 'Raymond Ryder'
 theme = 'hugo-theme-live-cv'
 copyright = "Copyright © 2024 Raymond Ryder"
 
+# List order determines display sequence on the page.
+# Remove any unnecessary items (e.g., unavailable URLs).
 [params]
     name = 'Raymond Ryder'
     description = 'Raymond Ryder is a PhD candidate in the Department of Arcane Studies at the Institute for Occult Sciences and Mysticism, specializing in advanced curse mechanics, forbidden rituals, and interdimensional entities. His research delves into the ethical boundaries and potential applications of high-level hexes, seeking to expand responsible practices within dark arts. Raymond holds a Master of Dark Arts and Esoteric Knowledge from Sorcerum University and has earned accolades for his groundbreaking containment protocols for cursed objects. Known for his meticulous and fearless approach, Raymond is dedicated to advancing the field of dark arts with a balance of caution and innovation.'
@@ -39,12 +41,16 @@ copyright = "Copyright © 2024 Raymond Ryder"
             start = '2013'
             end = '2017'
     
+    # Project content is located in /content/projects
     [params.projects]
         enable = true
 
     [params.publications]
+        # Specify the name to be highlighted
         name = 'Ryder, R.'
 
+        # `id` links publications to projects
+        # `selected` determines if displayed on the homepage
         [[params.publications.list]]
             id = 'shadow2023'
             selected = true
@@ -76,6 +82,7 @@ copyright = "Copyright © 2024 Raymond Ryder"
             citation = 'Ryder, R. “Beyond the Visible: How Dark Matter Affects Ancient Hexes.” Occult Sciences Review, 2020.'
             doi = '55.3454/2687-2545-83-234'
     
+    # Post content is located in /content/posts
     [params.posts]
         enable = true
 

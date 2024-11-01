@@ -2,11 +2,11 @@
 
 *Live CV* is a Hugo theme designed for building academic-style online curriculum vitae.
 
-![preview](images/preview.png)
-
 ## Demo
 
-View a live demo of the theme (built using the exampleSite as the source) hosted on [GitHub Pages](https://clusravin.github.io/hugo-theme-live-cv).
+View a live demo of the theme (built using the exampleSite as the source and featuring a fictional character Evander Grimveil) hosted on [GitHub Pages](https://clusravin.github.io/hugo-theme-live-cv).
+
+![preview](images/preview.png)
 
 ## Features
 

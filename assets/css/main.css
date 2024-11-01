@@ -45,8 +45,9 @@ header div a, footer div a {
   color: var(--secondary-text-color)
 }
 
-.controls a {
-  margin: 0 0.5rem;
+.controls {
+  display: flex;
+  gap: 1rem;
 }
 
 .paper {
@@ -110,11 +111,7 @@ header div a, footer div a {
     margin: 0 2rem 0.5rem 2rem;
   }
 
-  .controls {
-    margin: 0 1.5rem;
-  }
-
-  .attribution {
+  .controls, .attribution {
     margin: 0 2rem;
   }
 

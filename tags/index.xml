@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Evander Grimveil</title>
+    <link>https://clusravin.github.io/hugo-theme-live-cv/tags/</link>
+    <description>Recent content in Tags on Evander Grimveil</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Copyright © 2024 Evander Grimveil</copyright>
+    <lastBuildDate>Fri, 29 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://clusravin.github.io/hugo-theme-live-cv/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Artifact</title>
+      <link>https://clusravin.github.io/hugo-theme-live-cv/tags/artifact/</link>
+      <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://clusravin.github.io/hugo-theme-live-cv/tags/artifact/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Containment</title>
+      <link>https://clusravin.github.io/hugo-theme-live-cv/tags/containment/</link>
+      <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://clusravin.github.io/hugo-theme-live-cv/tags/containment/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ethics</title>
+      <link>https://clusravin.github.io/hugo-theme-live-cv/tags/ethics/</link>
+      <pubDate>Fri, 13 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://clusravin.github.io/hugo-theme-live-cv/tags/ethics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Summoning</title>
+      <link>https://clusravin.github.io/hugo-theme-live-cv/tags/summoning/</link>
+      <pubDate>Fri, 13 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://clusravin.github.io/hugo-theme-live-cv/tags/summoning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hex</title>
+      <link>https://clusravin.github.io/hugo-theme-live-cv/tags/hex/</link>
+      <pubDate>Sat, 02 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>https://clusravin.github.io/hugo-theme-live-cv/tags/hex/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rites</title>
+      <link>https://clusravin.github.io/hugo-theme-live-cv/tags/rites/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://clusravin.github.io/hugo-theme-live-cv/tags/rites/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

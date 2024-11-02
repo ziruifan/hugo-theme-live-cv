@@ -72,6 +72,7 @@ header div a, footer div a {
 
 .name-bar h1 {
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .contacts {
@@ -80,7 +81,7 @@ header div a, footer div a {
   justify-content: center;
   text-align: center;
   width: 80%;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem auto;
 }
 
 .contact {

@@ -22,7 +22,7 @@ body {
   color: var(--primary-text-color);
   font-family: 'Noto Serif';
   line-height: 1.5;
-  max-width: 850px;
+  max-width: 900px;
   margin: 2rem auto;
 }
 
@@ -61,7 +61,7 @@ header div a, footer div a {
 .paper {
   background-color: #fff;
   box-shadow: 0 0 3rem #999;
-  min-height: 1050px;
+  min-height: 1100px;
   margin: 2rem auto;
   padding: 4rem 4rem 6rem 4rem;
 }

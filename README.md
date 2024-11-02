@@ -30,4 +30,4 @@ git clone https://github.com/Clusravin/hugo-theme-live-cv.git
 
 ## Configuration
 
-Site configurations are defined in the main Hugo configuration file (e.g., `hugo.toml`).
+Site configurations are defined in the main Hugo configuration file (e.g., `hugo.toml`). For an example, refer to [exampleSite/hugo.toml](https://github.com/Clusravin/hugo-theme-live-cv/blob/main/exampleSite/hugo.toml).

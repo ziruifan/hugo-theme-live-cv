@@ -1,0 +1,20 @@
+{{ if .Content }}
+    <div class="{{ lower .Title }}">
+        <h2 class="section-heading">{{ .Title }}</h2>
+        <ul>
+            {{ range .Content.List }}
+                <li>
+                    <div class="metadata">
+                        <strong>{{ .title }}</strong>
+                        {{ if .start }}
+                            {{ partial "period.html" . }}
+                        {{ else if .time }}
+                            <time>{{ .time }}</time>
+                        {{ end }}
+                    </div>
+                    {{ .organization }}
+                </li>
+            {{ end }}
+        </ul>
+    </div>
+{{ end }}

@@ -31,15 +31,23 @@ copyright = "Copyright © 2024 Evander Grimveil"
 
     [params.education]
         [[params.education.list]]
-            institution = 'Sorcerum University'
-            degree = 'Master of Dark Arts and Esoteric Knowledge'
+            organization = 'Sorcerum University'
+            title = 'Master of Dark Arts and Esoteric Knowledge'
             start = '2017'
             end = '2019'
         [[params.education.list]]
-            institution = 'Eldergrove Academy'
-            degree = 'Bachelor of Arcane Practices and Ritual Theory'
+            organization = 'Eldergrove Academy'
+            title = 'Bachelor of Arcane Practices and Ritual Theory'
             start = '2013'
             end = '2017'
+    
+    # Uncomment below to add an employment section
+    # [params.employment]
+    #     [[params.employment.list]]
+    #         organization = 'Your Employer'
+    #         title = 'Your Position'
+    #         start = 'Start Year'
+    #         end = 'End Year'
     
     # Project content is located in /content/projects
     [params.projects]
@@ -82,22 +90,43 @@ copyright = "Copyright © 2024 Evander Grimveil"
             citation = 'Grimveil, E. “Beyond the Visible: How Dark Matter Affects Ancient Hexes.” Occult Sciences Review, 2020.'
             doi = '55.3454/2687-2545-83-234'
     
+    # Uncomment below to add an teaching section
+    # [params.teaching]
+    #     [[params.teaching.list]]
+    #         organization = 'Your Institution'
+    #         title = 'Your Course Title'
+    #         start = 'Start Year'
+    #         end = 'End Year'
+
+    [params.awards]
+        [[params.awards.list]]
+            organization = 'Institute for Occult Sciences and Mysticism'
+            title = 'Arcane Innovation Award'
+            time = '2022'
+        [[params.awards.list]]
+            organization = 'Sorcerum University'
+            title = 'Excellence in Forbidden Arts Scholarship'
+            time = '2018'
+    
     # Post content is located in /content/posts
     [params.posts]
         enable = true
         latest = 3
 
-    [params.people]        
-        supervisor = 'Prof. Morganna Elyndris'
+    [params.people]
+        supervisor.name = 'Morganna Elyndris'
+        supervisor.url = 'https://blog.iosm.edu/melyndris/'
 
-        [[params.people.coauthors.list]]
-            name = 'Morganna Elyndris'
-            url = 'https://blog.iosm.edu/melyndris/'
-        [[params.people.coauthors.list]]
+        # Uncomment below to add an student entry
+        # [[params.people.students.list]]
+        #     name = 'Your Student's Name'
+        #     url = 'Your Student's Homepage'
+
+        [[params.people.collaborators.list]]
             name = 'Edrick Thornwell'
             url = 'https://blog.iosm.edu/ethornwell/'
-        [[params.people.coauthors.list]]
+        [[params.people.collaborators.list]]
             name = 'Selene Varrow'
-        [[params.people.coauthors.list]]
+        [[params.people.collaborators.list]]
             name = 'Elara Nightshade'
             url = 'https://blog.iosm.edu/enightshade/'

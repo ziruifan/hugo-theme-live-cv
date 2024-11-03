@@ -1,0 +1,9 @@
+<strong>{{ .Label }}:</strong>
+{{ range $i, $person := .List }}
+    {{ if $i }}, {{ end }}
+    {{ if .url }}
+        <a class="person" href="{{ .url | safeURL }}">{{ .name }}</a>
+    {{ else }}
+        {{ .name }}
+    {{ end }}
+{{ end }}

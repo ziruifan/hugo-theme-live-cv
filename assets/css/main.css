@@ -144,6 +144,6 @@ header div a, footer div a {
   }
 
   .paper {
-    box-shadow: 0 0 3rem #777;
+    box-shadow: 0 0 3rem #000;
   }
 }

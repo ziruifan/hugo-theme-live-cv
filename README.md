@@ -17,7 +17,9 @@ View a live demo of the theme (built using the exampleSite as the source and fea
 - **Easy Publication Management**:
   - Automatic author name highlighting.
   - Support for defining representative publications.
-- **Responsive Layout**: Optimized for both desktop and mobile viewing.
+- **Responsive Design**: 
+  - Adaptive layout for various screen sizes.
+  - Automatic light/dark mode based on system preferences.
 
 ## Installation
 

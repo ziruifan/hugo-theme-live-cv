@@ -133,3 +133,17 @@ header div a, footer div a {
     text-align: left;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --secondary-text-color: #cfcfcf;
+  }
+  
+  body {
+    background-color: #333;
+  }
+
+  .paper {
+    box-shadow: 0 0 3rem #777;
+  }
+}

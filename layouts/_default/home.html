@@ -87,7 +87,7 @@
                         </div>
                     {{ end }}
                     {{ if gt (len .Pages) site.Params.Posts.Latest }}
-                        ...
+                        <a href="{{ .Permalink }}">...</a>
                     {{ end }}
                 {{ end }}
             </div>

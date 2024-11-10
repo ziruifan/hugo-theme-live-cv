@@ -33,3 +33,33 @@ git clone https://github.com/Clusravin/hugo-theme-live-cv.git
 ## Configuration
 
 Site configurations are defined in the main Hugo configuration file (e.g., `hugo.toml`). Available sections include Contacts, Research Interests, Education, Employment, Projects, Publications, Awards, Posts, and People. For an example, refer to [exampleSite/hugo.toml](https://github.com/Clusravin/hugo-theme-live-cv/blob/main/exampleSite/hugo.toml).
+
+## Usage
+
+The file tree below shows the structure of the site’s content directory:
+
+```
+.
+└── content/
+    ├── posts/
+    │   ├── post-1/
+    │   │   ├── index.md
+    │   │   └── image.png
+    │   └── post-2/
+    │       └── index.md
+    └── projects/
+        └── project-1/
+            └── index.md
+```
+
+To create a new page, run one of the following commands in the root directory of your Hugo site:
+
+For a new post:
+```bash
+hugo new content/posts/post-1/index.md
+```
+
+For a new project:
+```bash
+hugo new content/projects/project-1/index.md
+```

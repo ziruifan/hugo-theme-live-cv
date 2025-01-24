@@ -1,4 +1,5 @@
 <div class="summary">
-    {{ .Summary }}
+    {{ $summary := .Content | strings.Truncate 400 | replaceRE "<img[^>]*>" "" }}
+    {{ $summary | safeHTML }}
     {{ if .Truncated }}...{{ end }}
 </div>

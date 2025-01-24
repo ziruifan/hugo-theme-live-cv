@@ -4,7 +4,7 @@
 
 ## Demo
 
-View a live demo of the theme (built using the exampleSite as the source and featuring a fictional character Evander Grimveil) hosted on [GitHub Pages](https://clusravin.github.io/hugo-theme-live-cv).
+View a live demo of the theme (built using the exampleSite as the source and featuring a fictional character Evander Grimveil) hosted on [GitHub Pages](https://thebenthicwyrm.github.io/hugo-theme-live-cv).
 
 ![preview](images/preview.png)
 
@@ -27,12 +27,12 @@ To install *Live CV*, run the following commands in the root directory of your H
 
 ```bash
 cd themes
-git clone https://github.com/Clusravin/hugo-theme-live-cv.git
+git clone https://github.com/TheBenthicWyrm/hugo-theme-live-cv.git
 ```
 
 ## Configuration
 
-Site configurations are defined in the main Hugo configuration file (e.g., `hugo.toml`). Available sections include Contacts, Research Interests, Education, Employment, Projects, Publications, Awards, Posts, and People. For an example, refer to [exampleSite/hugo.toml](https://github.com/Clusravin/hugo-theme-live-cv/blob/main/exampleSite/hugo.toml).
+Site configurations are defined in the main Hugo configuration file (e.g., `hugo.toml`). Available sections include Contacts, Research Interests, Education, Employment, Projects, Publications, Awards, Posts, and People. For an example, refer to [exampleSite/hugo.toml](https://github.com/TheBenthicWyrm/hugo-theme-live-cv/blob/main/exampleSite/hugo.toml).
 
 ## Usage
 

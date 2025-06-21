@@ -113,7 +113,7 @@ copyright = "Copyright © 2024 Evander Grimveil"
         enable = true
         latest = 3
 
-    # Uncomment below to add an links section
+    # Uncomment below to add a links section
     # [params.links]
     #     [[params.links.list]]
     #         platform = 'Social Platform'

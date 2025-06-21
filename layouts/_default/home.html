@@ -93,6 +93,16 @@
             </div>
         {{ end }}
 
+        {{ with .Site.Params.Links }}
+            <div class="links">
+                <h2 class="section-heading">Links</h2>
+                {{ range .List }}
+                    <strong>{{ .platform }}: </strong><a href="{{ .url | safeURL }}">{{ .text }}</a>
+                    <br/>
+                {{ end }}
+            </div>
+        {{ end }}
+
         {{ with .Site.Params.People }}
             <div class="people">
                 <h2 class="section-heading">People</h2>

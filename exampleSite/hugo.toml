@@ -113,6 +113,13 @@ copyright = "Copyright © 2024 Evander Grimveil"
         enable = true
         latest = 3
 
+    # Uncomment below to add an links section
+    # [params.links]
+    #     [[params.links.list]]
+    #         platform = 'Social Platform'
+    #         text = '@yourid'
+    #         url = 'https://platform.com/@yourid'
+
     [params.people]
         supervisor.name = 'Morganna Elyndris'
         supervisor.url = 'https://blog.iosm.edu/melyndris/'

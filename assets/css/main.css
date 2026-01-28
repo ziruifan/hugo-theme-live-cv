@@ -28,11 +28,11 @@ body {
 
 a {
   color: var(--primary-text-color);
-  text-decoration: none;
+  text-decoration-color: #ccc;
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration-color: var(--primary-text-color);
 }
 
 img {
@@ -50,7 +50,8 @@ header, footer {
 }
 
 header div a, footer div a {
-  color: var(--secondary-text-color)
+  color: var(--secondary-text-color);
+  text-decoration-color: var(--secondary-text-color);
 }
 
 .controls {

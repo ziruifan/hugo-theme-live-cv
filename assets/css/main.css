@@ -51,6 +51,11 @@ header, footer {
 
 header div a, footer div a {
   color: var(--secondary-text-color);
+  text-decoration: none;
+}
+
+header div a:hover, footer div a:hover {
+  text-decoration: underline;
   text-decoration-color: var(--secondary-text-color);
 }
 

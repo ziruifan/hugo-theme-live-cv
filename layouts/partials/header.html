@@ -1,14 +1,12 @@
 <div class="navigation">
-    {{ $url := replace .Permalink (printf "%s" .Site.BaseURL) "" }}
-    {{ $.Scratch.Add "path" .Site.BaseURL }}
-    <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a> 
-    {{ range $index, $name := split $url "/" }}
-        {{ $.Scratch.Add "path" $name }}
-        {{ if ne $name "" }}
-            {{ $basename := index (split . ".") 0 }}
-            > <a href='{{ $.Scratch.Get "path" | absURL }}'>{{ strings.Title (replaceRE "-" " " $basename) }}</a>
-            {{ $.Scratch.Add "path" "/" }}
+    <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+    {{ range .Ancestors.Reverse }}
+        {{ if not .IsHome }}
+            > <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         {{ end }}
+    {{ end }}
+    {{ if not .IsHome }}
+        > <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     {{ end }}
 </div>
 

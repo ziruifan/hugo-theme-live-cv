@@ -1,0 +1,33 @@
+{{- /* Grid of people, split into groups. Fields: name, url, group, role, affiliation.
+       Groups (e.g. Supervisor, Collaborators) get a heading and appear in order of first use;
+       people without a group are listed first, without a heading.
+       The heading follows the count: "Supervisor" for one person, "Supervisors" for more. */ -}}
+{{- $groups := slice }}
+{{- range .items }}
+  {{- $g := .group | default "" }}
+  {{- if not (in $groups $g) }}{{ $groups = $groups | append $g }}{{ end }}
+{{- end }}
+{{- range $g := $groups }}
+  {{- with $g }}
+    {{- $count := 0 }}
+    {{- range $.items }}{{ if eq (.group | default "") $g }}{{ $count = add $count 1 }}{{ end }}{{ end }}
+<h3 class="kicker people-group">{{ cond (gt $count 1) (pluralize .) (singularize .) }}</h3>
+  {{- end }}
+<div class="people">
+  <div class="people-grid">
+    {{- range $.items }}
+      {{- if eq (.group | default "") $g }}
+    <div>
+      {{- if .url }}<a class="person-name" href="{{ .url }}">{{ .name }}</a>{{ else }}<span class="person-name">{{ .name }}</span>{{ end }}
+      {{- $sub := slice }}
+      {{- with .role }}{{ $sub = $sub | append . }}{{ end }}
+      {{- with .affiliation }}{{ $sub = $sub | append . }}{{ end }}
+      {{- with $sub }}
+      <div>{{ delimit . " · " | markdownify }}</div>
+      {{- end }}
+    </div>
+      {{- end }}
+    {{- end }}
+  </div>
+</div>
+{{- end }}

@@ -1,0 +1,27 @@
+{{- /* Responsive <img>. Context dict:
+       src (resource or URL string), alt, class, sizes, widths (slice of ints), eager (bool). */ -}}
+{{- $src := .src }}
+{{- $alt := .alt | default "" }}
+{{- $sizes := .sizes | default "100vw" }}
+{{- $widths := .widths | default (slice 480 800 1200 1600) }}
+{{- $loading := cond (.eager | default false) "eager" "lazy" }}
+{{- $class := .class | default "" }}
+{{- if eq (printf "%T" $src) "string" }}
+<img src="{{ $src }}" alt="{{ $alt }}"{{ with $class }} class="{{ . }}"{{ end }} loading="{{ $loading }}" decoding="async">
+{{- else if in (slice "jpeg" "png" "webp" "tiff" "bmp") $src.MediaType.SubType }}
+  {{- $srcset := slice }}
+  {{- $fallback := "" }}
+  {{- range $w := $widths }}
+    {{- if le $w $src.Width }}
+      {{- $img := $src.Resize (printf "%dx webp" $w) }}
+      {{- $srcset = $srcset | append (printf "%s %dw" $img.RelPermalink $w) }}
+      {{- $fallback = $img }}
+    {{- end }}
+  {{- end }}
+  {{- if not $fallback }}
+    {{- $fallback = $src.Resize (printf "%dx webp" $src.Width) }}
+  {{- end }}
+<img src="{{ $fallback.RelPermalink }}"{{ with $srcset }} srcset="{{ delimit . ", " }}" sizes="{{ $sizes }}"{{ end }} width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" alt="{{ $alt }}"{{ with $class }} class="{{ . }}"{{ end }} loading="{{ $loading }}" decoding="async">
+{{- else }}
+<img src="{{ $src.RelPermalink }}" alt="{{ $alt }}"{{ with $class }} class="{{ . }}"{{ end }} loading="{{ $loading }}" decoding="async">
+{{- end -}}

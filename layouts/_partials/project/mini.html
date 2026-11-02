@@ -1,0 +1,13 @@
+{{- /* Compact card with the photo on top. Context: page. */ -}}
+{{- $p := . }}
+<article class="mini-card">
+  {{- with partial "func/cover.html" $p }}
+  <a href="{{ $p.RelPermalink }}" tabindex="-1" aria-hidden="true">
+    {{- partial "image.html" (dict "src" .src "alt" .alt "class" "figure-img" "sizes" "(min-width: 900px) 240px, (min-width: 600px) 33vw, 100vw" "widths" (slice 400 600 900)) -}}
+  </a>
+  {{- end }}
+  <h3 class="mini-card-title"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h3>
+  {{- with partial "func/period.html" $p.Params }}
+  <div class="meta">{{ . }}</div>
+  {{- end }}
+</article>

@@ -1,0 +1,30 @@
+{{- /* Context: dict "class", "title", "anchor". */ -}}
+{{- $class := .class }}
+{{- $title := .title }}
+{{- $anchor := .anchor }}
+{{- $pubs := partial "func/publications.html" . }}
+{{- /* Show entries marked selected: true; if none are marked, show all. */ -}}
+{{- $items := where $pubs.items "selected" true }}
+{{- if not $items }}{{ $items = $pubs.items }}{{ end }}
+{{- with $items }}
+  {{- $types := slice }}
+  {{- range . }}
+    {{- $t := .type | default "" }}
+    {{- if not (in $types $t) }}{{ $types = $types | append $t }}{{ end }}
+  {{- end }}
+<section class="{{ $class }}" id="{{ $anchor }}">
+  <div class="section-head section-head--pubs"><h2 class="section-title">{{ $title }}</h2></div>
+  {{- range $t := $types }}
+    {{- with $t }}
+  <h3 class="kicker pub-group">{{ . }}</h3>
+    {{- end }}
+  <div class="rows pubs">
+    {{- range $items }}
+      {{- if eq (.type | default "") $t }}
+    {{ partial "publication.html" (dict "item" . "highlight" $pubs.highlight) }}
+      {{- end }}
+    {{- end }}
+  </div>
+  {{- end }}
+</section>
+{{- end }}

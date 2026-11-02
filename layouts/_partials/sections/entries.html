@@ -1,0 +1,20 @@
+{{- /* Title with organization below; the period sits on the right in wide sections.
+       Fields: title, organization, start, end | time, url, description. */ -}}
+<div class="rows rows--loose">
+  {{- range .items }}
+  <div class="entry item">
+    <div class="item-main">
+      <div class="entry-title">{{ with .url }}<a href="{{ . }}">{{ end }}{{ .title | markdownify }}{{ if .url }}</a>{{ end }}</div>
+      {{- with .organization }}
+      <div class="entry-org">{{ . | markdownify }}</div>
+      {{- end }}
+      {{- with .description }}
+      <div class="entry-desc">{{ . | markdownify }}</div>
+      {{- end }}
+    </div>
+    {{- with partial "func/period.html" . }}
+    <div class="date">{{ . }}</div>
+    {{- end }}
+  </div>
+  {{- end }}
+</div>

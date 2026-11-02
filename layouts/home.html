@@ -1,0 +1,8 @@
+{{ define "main" }}
+  {{- partial "home/masthead.html" . }}
+<div class="sections">
+  {{- range partialCached "func/home-sections.html" . "home-sections" }}
+  {{ partial "home/section.html" (merge . (dict "page" $)) }}
+  {{- end }}
+</div>
+{{ end }}

@@ -1,0 +1,13 @@
+{{- /* Short standfirst for a page. Context: dict "page", "auto" (fall back to an excerpt). */ -}}
+{{- $p := .page }}
+{{- $out := "" }}
+{{- with $p.Params.summary }}
+  {{- $out = $p.RenderString . }}
+{{- else }}
+  {{- with $p.Description }}
+    {{- $out = . }}
+  {{- else }}
+    {{- if $.auto }}{{ $out = $p.Summary | plainify | htmlUnescape | truncate 220 }}{{ end }}
+  {{- end }}
+{{- end }}
+{{- return $out -}}

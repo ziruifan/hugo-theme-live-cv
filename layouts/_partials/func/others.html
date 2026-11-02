@@ -1,0 +1,10 @@
+{{- /* Up to "count" pages from "pages" other than "page", starting right after it and wrapping around. */ -}}
+{{- $pages := .pages }}
+{{- $i := -1 }}
+{{- range $k, $p := $pages }}{{ if $p.Eq $.page }}{{ $i = $k }}{{ end }}{{ end }}
+{{- $out := slice }}
+{{- if ge $i 0 }}
+  {{- range after (add $i 1) $pages }}{{ $out = $out | append . }}{{ end }}
+  {{- range first $i $pages }}{{ $out = $out | append . }}{{ end }}
+{{- end }}
+{{- return first .count $out -}}

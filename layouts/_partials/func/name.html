@@ -1,0 +1,3 @@
+{{- /* The owner's name: data/profile.yaml, then params.name, then the site title. */ -}}
+{{- $name := or site.Data.profile.name site.Params.name site.Title }}
+{{- return $name -}}

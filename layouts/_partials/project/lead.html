@@ -1,0 +1,33 @@
+{{- /* Lead story. Context dict: page, level (2 or 3), tags (kicker tag count), class. */ -}}
+{{- $p := .page }}
+{{- $cover := partial "func/cover.html" $p }}
+<article class="project-lead{{ with .class }} {{ . }}{{ end }}">
+  <div class="project-lead-text">
+    {{ partial "kicker.html" (dict "page" $p "limit" .tags) }}
+    {{- if eq .level 2 }}
+    <h2 class="project-lead-title"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
+    {{- else }}
+    <h3 class="project-lead-title"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h3>
+    {{- end }}
+    {{- with partial "func/dek.html" (dict "page" $p "auto" true) }}
+    <p class="project-dek">{{ . }}</p>
+    {{- end }}
+    {{- with $p.Params.contributions }}
+    <ul class="project-points">
+      {{- range . }}
+      <li>{{ $p.RenderString . }}</li>
+      {{- end }}
+    </ul>
+    {{- end }}
+    {{- with partial "func/period.html" $p.Params }}
+    <div class="meta">{{ . }}</div>
+    {{- end }}
+  </div>
+  {{- with $cover }}
+  <figure class="project-lead-figure">
+    <a href="{{ $p.RelPermalink }}" tabindex="-1" aria-hidden="true">
+      {{- partial "image.html" (dict "src" .src "alt" .alt "class" "figure-img" "sizes" "(min-width: 900px) 460px, (min-width: 640px) 55vw, 100vw") -}}
+    </a>
+  </figure>
+  {{- end }}
+</article>

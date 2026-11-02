@@ -1,0 +1,6 @@
+{{- /* Bulleted list. Items are Markdown strings, or maps with a "text" field. */ -}}
+<ul class="bullets">
+  {{- range .items }}
+  <li>{{ if reflect.IsMap . }}{{ .text | markdownify }}{{ else }}{{ . | markdownify }}{{ end }}</li>
+  {{- end }}
+</ul>

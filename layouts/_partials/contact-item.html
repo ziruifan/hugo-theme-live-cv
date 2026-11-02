@@ -1,0 +1,18 @@
+{{- /* One contact or link from data/profile.yaml. Both use the same fields:
+         name  optional label, shown as "name: text" (or alone when there is no text)
+         icon  optional icon name (see assets/icons)
+         text  the value, e.g. an email address or handle ("info" is accepted too)
+         url   optional link; the text (or the name, when there is no text) becomes the link
+       A plain string is shown as Markdown. */ -}}
+{{- $c := . }}
+{{- if reflect.IsMap $c }}
+  {{- $text := $c.text | default $c.info }}
+  {{- $link := $text | default $c.name }}
+<span class="contact">{{ partial "icon.html" $c.icon }}
+  {{- if and $text $c.name }}{{ $c.name }}: {{ end }}
+  {{- /* Plain text inside links: Markdown would turn an email address into a second, nested link. */ -}}
+  {{- with $c.url }}<a href="{{ . | safeURL }}">{{ $link }}</a>{{ else }}{{ $link | markdownify }}{{ end -}}
+</span>
+{{- else }}
+<span class="contact">{{ $c | markdownify }}</span>
+{{- end -}}

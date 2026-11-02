@@ -1,0 +1,15 @@
+{{- /* One citation. Context dict: item, highlight (list of names to bold). */ -}}
+{{- $html := .item.citation | default "" | markdownify }}
+{{- range .highlight }}
+  {{- $needle := string (markdownify .) }}
+  {{- $html = replace $html $needle (printf "<strong>%s</strong>" $needle) }}
+{{- end }}
+{{- $links := slice }}
+{{- with .item.doi }}{{ $links = $links | append (dict "name" (printf "doi:%s" .) "url" (printf "https://doi.org/%s" .)) }}{{ end }}
+{{- range .item.links }}{{ $links = $links | append . }}{{ end }}
+<div class="pub">
+  {{- $html | safeHTML }}
+  {{- with $links }}
+  <span class="pub-links">{{ range . }}<a href="{{ .url }}">{{ .name }}</a>{{ end }}</span>
+  {{- end -}}
+</div>

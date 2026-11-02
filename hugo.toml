@@ -1,0 +1,50 @@
+# Theme defaults. Anything set in the site's own hugo.toml takes precedence.
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = '0.146.0'
+
+[params]
+  # 'auto' follows the visitor's system setting; 'light' or 'dark' forces one.
+  colorScheme = 'auto'
+
+  # Show "Powered by Hugo & Live CV" below the page.
+  attribution = true
+
+  # Section links in the margin left of the page (wide screens only),
+  # generated from the home-page sections.
+  navbar = true
+
+  # Separator between the contacts (and between the links) under the name.
+  # Use '' for spacing only.
+  contactSeparator = '·'
+
+  # "Top" and "Bottom" links in the margin right of the page (wide screens only).
+  scrollButtons = true
+
+  [params.home]
+    # Latest news items on the home page.
+    news = 4
+    # Projects on the home page (main projects first); 0 shows all.
+    projects = 0
+
+    # Home page sections, in order. `key` is 'about', 'news', 'projects',
+    # 'publications', or the name of a data file (data/<key>.yaml).
+    #   width = 'full' (default) or 'half'; consecutive half-width sections sit side by side.
+    #   enable = false hides a section without removing it from the list.
+    sections = [
+      { key = 'about' },
+      { key = 'news' },
+      { key = 'education' },
+      { key = 'appointments' },
+      { key = 'publications' },
+      { key = 'projects' },
+      { key = 'grants', width = 'half' },
+      { key = 'honors', width = 'half' },
+      { key = 'presentations' },
+      { key = 'teaching', width = 'half' },
+      { key = 'service', width = 'half' },
+      { key = 'skills' },
+      { key = 'people' },
+    ]

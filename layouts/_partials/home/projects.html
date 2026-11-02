@@ -1,0 +1,23 @@
+{{- /* Context: dict "class", "title", "anchor". Main projects first, then side projects. */ -}}
+{{- $class := .class }}
+{{- $title := .title }}
+{{- $anchor := .anchor }}
+{{- with site.GetPage "/projects" }}
+  {{- $sec := . }}
+  {{- $pages := .RegularPages }}
+  {{- with $pages }}
+    {{- $ordered := partial "func/projects-ordered.html" . }}
+    {{- $n := site.Params.home.projects | default 0 }}
+    {{- $shown := $ordered }}
+    {{- if gt $n 0 }}{{ $shown = first $n $ordered }}{{ end }}
+<section class="{{ $class }}" id="{{ $anchor }}">
+  <div class="section-head section-head--spaced">
+    <h2 class="section-title"><a href="{{ $sec.RelPermalink }}">{{ $title }}</a></h2>
+    {{- if gt (len $pages) (len $shown) }}
+    <a class="section-more" href="{{ $sec.RelPermalink }}">{{ i18n "seeAll" }}</a>
+    {{- end }}
+  </div>
+  {{ partial "project/list.html" (dict "pages" $shown "level" 3 "tags" 1) }}
+</section>
+  {{- end }}
+{{- end }}

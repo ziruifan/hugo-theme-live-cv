@@ -1,0 +1,21 @@
+{{- /* Secondary story with the photo at the bottom. Context dict: page, level (2 or 3). */ -}}
+{{- $p := .page }}
+<article class="project-card">
+  {{ partial "kicker.html" (dict "page" $p "limit" 1) }}
+  {{- if eq .level 2 }}
+  <h2 class="project-card-title"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
+  {{- else }}
+  <h3 class="project-card-title"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h3>
+  {{- end }}
+  {{- with partial "func/dek.html" (dict "page" $p "auto" true) }}
+  <p class="project-card-dek">{{ . }}</p>
+  {{- end }}
+  {{- with partial "func/period.html" $p.Params }}
+  <div class="meta">{{ . }}</div>
+  {{- end }}
+  {{- with partial "func/cover.html" $p }}
+  <a class="project-card-image" href="{{ $p.RelPermalink }}" tabindex="-1" aria-hidden="true">
+    {{- partial "image.html" (dict "src" .src "alt" .alt "class" "figure-img" "sizes" "(min-width: 900px) 240px, (min-width: 600px) 33vw, 100vw" "widths" (slice 400 600 900)) -}}
+  </a>
+  {{- end }}
+</article>

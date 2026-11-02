@@ -1,0 +1,24 @@
+{{- $name := partialCached "func/name.html" . }}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no, email=no, address=no">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+{{- $desc := "" }}
+{{- if .IsHome }}
+  {{- with site.Params.description | default site.Data.profile.bio }}{{ $desc = markdownify . }}{{ end }}
+{{- else }}
+  {{- $desc = .Description | default .Summary }}
+{{- end }}
+{{- with $desc }}
+<meta name="description" content="{{ . | plainify | htmlUnescape | strings.TrimSpace | truncate 300 }}">
+{{- end }}
+<meta name="author" content="{{ $name }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="icon" href="{{ site.Params.favicon | default "favicon.ico" | relURL }}">
+{{- range .AlternativeOutputFormats }}
+{{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{- end }}
+{{ partial "opengraph.html" . }}
+{{ partial "twitter_cards.html" . }}
+{{ partialCached "head/fonts.html" . }}
+{{ partialCached "head/css.html" . }}

@@ -1,0 +1,35 @@
+{{- $name := partialCached "func/name.html" . }}
+<div class="topbar{{ if .IsHome }} topbar--home{{ end }}">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    {{- if .IsHome }}
+    <span>{{ $name }}</span>
+    {{- else }}
+    <a href="{{ site.Home.RelPermalink }}">{{ $name }}</a>
+      {{- range .Ancestors.Reverse }}
+        {{- if not .IsHome }}<span class="sep" aria-hidden="true">&gt;</span><a href="{{ .RelPermalink }}">{{ .LinkTitle | truncate 48 }}</a>{{ end }}
+      {{- end }}
+    <span class="sep" aria-hidden="true">&gt;</span><span aria-current="page"{{ if gt (len .LinkTitle) 48 }} title="{{ .LinkTitle }}"{{ end }}>{{ .LinkTitle | truncate 48 }}</span>
+    {{- end }}
+  </nav>
+  {{- if .IsHome }}
+    {{- with site.Params.pdf }}
+  <nav class="topbar-nav" aria-label="Downloads">
+    <a href="{{ . | relURL }}">{{ i18n "downloadPDF" }}</a>
+  </nav>
+    {{- end }}
+  {{- else if and .IsPage .CurrentSection (not .CurrentSection.IsHome) }}
+    {{- $pages := .CurrentSection.RegularPages }}
+    {{- $i := -1 }}
+    {{- range $k, $p := $pages }}{{ if $p.Eq $ }}{{ $i = $k }}{{ end }}{{ end }}
+    {{- if ge $i 0 }}
+  <nav class="topbar-nav" aria-label="Pagination">
+      {{- if gt $i 0 }}
+    <a href="{{ (index $pages (sub $i 1)).RelPermalink }}" rel="prev"><span class="arrow arrow--prev" aria-hidden="true">&lt;</span>{{ i18n "previous" }}</a>
+      {{- end }}
+      {{- if lt $i (sub (len $pages) 1) }}
+    <a href="{{ (index $pages (add $i 1)).RelPermalink }}" rel="next">{{ i18n "next" }}<span class="arrow arrow--next" aria-hidden="true">&gt;</span></a>
+      {{- end }}
+  </nav>
+    {{- end }}
+  {{- end }}
+</div>

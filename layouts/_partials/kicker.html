@@ -1,0 +1,23 @@
+{{- /* Label above a headline. Context dict: page, prefix (text shown first, set off by " | "), limit (number of tags), link (bool).
+       Uses params.kicker if set; projects show their tags; other pages their first category. */ -}}
+{{- $p := .page }}
+{{- $link := .link | default false }}
+{{- $prefix := .prefix }}
+{{- $parts := slice }}
+{{- with $p.Params.kicker }}
+  {{- $parts = $parts | append (dict "text" .) }}
+{{- else }}
+  {{- $terms := slice }}
+  {{- if eq $p.Section "projects" }}
+    {{- $terms = first (.limit | default 2) ($p.GetTerms "tags") }}
+  {{- else }}
+    {{- $terms = first 1 ($p.GetTerms "categories") }}
+  {{- end }}
+  {{- range $terms }}{{ $parts = $parts | append (dict "text" .LinkTitle "url" .RelPermalink) }}{{ end }}
+{{- end }}
+{{- if or $prefix $parts }}
+<div class="kicker">
+  {{- with $prefix }}{{ . }}{{ if $parts }} | {{ end }}{{ end }}
+  {{- range $i, $k := $parts }}{{ if $i }} · {{ end }}{{ if and $link $k.url }}<a href="{{ $k.url }}">{{ $k.text }}</a>{{ else }}{{ $k.text }}{{ end }}{{ end -}}
+</div>
+{{- end }}

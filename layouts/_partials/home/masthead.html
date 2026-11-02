@@ -1,0 +1,49 @@
+{{- $p := site.Data.profile | default dict }}
+<header class="masthead">
+  <h1 class="masthead-name">{{ partialCached "func/name.html" . }}</h1>
+  {{- /* Optional title line: "Position, Affiliation". Each part wraps as a whole. */ -}}
+  {{- $title := slice }}
+  {{- with $p.position }}{{ $title = $title | append (markdownify .) }}{{ end }}
+  {{- with $p.affiliation }}{{ $title = $title | append (markdownify .) }}{{ end }}
+  {{- with $title }}
+  <p class="masthead-title">
+    {{- range $i, $t := . }}{{ if $i }}, {{ end }}<span>{{ $t }}</span>{{ end -}}
+  </p>
+  {{- end }}
+  {{- /* Separator between contacts and between links: params.contactSeparator (default "·").
+         Set it to '' for spacing only. */ -}}
+  {{- $sep := "·" }}
+  {{- if isset site.Params "contactseparator" }}{{ $sep = site.Params.contactSeparator }}{{ end }}
+  {{- /* Contacts and links share the same fields (name, icon, text, url); see contact-item.html. */ -}}
+  {{- range $line := slice (dict "items" $p.contacts "class" "contacts") (dict "items" $p.links "class" "contacts contacts--links") }}
+    {{- with $line.items }}
+  <p class="{{ $line.class }}">
+      {{- range $i, $c := . }}
+        {{- if $i }}<span class="sep" aria-hidden="true">{{ $sep }}</span>{{ end }}
+        {{- partial "contact-item.html" $c }}
+      {{- end -}}
+  </p>
+    {{- end }}
+  {{- end }}
+  {{- if or $p.contacts $p.links }}
+  <script>
+    /* Hide a separator when the items on either side of it end up on different lines. */
+    (function () {
+      var lines = document.currentScript.parentNode.querySelectorAll('.contacts');
+      function update() {
+        /* visibility keeps the dot's width, so hiding it never moves the other items */
+        lines.forEach(function (line) {
+          line.querySelectorAll('.sep').forEach(function (sep) {
+            var prev = sep.previousElementSibling.getBoundingClientRect();
+            var next = sep.nextElementSibling.getBoundingClientRect();
+            sep.style.visibility = next.top >= prev.bottom - 1 ? 'hidden' : '';
+          });
+        });
+      }
+      update();
+      if (window.ResizeObserver) lines.forEach(function (line) { new ResizeObserver(update).observe(line); });
+      if (document.fonts) document.fonts.ready.then(update);
+    })();
+  </script>
+  {{- end }}
+</header>

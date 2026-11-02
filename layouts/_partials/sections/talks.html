@@ -1,0 +1,16 @@
+{{- /* “Title.” Venue, Location; the date sits on the right in wide sections.
+       Fields: title, venue, location, time | start, end, url. */ -}}
+<div class="rows">
+  {{- range .items }}
+    {{- $title := .title | markdownify }}
+    {{- $stop := cond (findRE `[.?!]$` (string .title)) "" "." }}
+  <div class="item">
+    <div class="item-main">“{{ with .url }}<a href="{{ . }}">{{ $title }}</a>{{ else }}{{ $title }}{{ end }}{{ $stop }}”
+      {{- with .venue }} <em>{{ . | markdownify }}</em>{{ end }}
+      {{- with .location }}, {{ . | markdownify }}{{ end }}</div>
+    {{- with partial "func/period.html" . }}
+    <div class="date">{{ . }}</div>
+    {{- end }}
+  </div>
+  {{- end }}
+</div>

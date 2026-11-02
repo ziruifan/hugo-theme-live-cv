@@ -1,0 +1,22 @@
+{{- /* Self-hosted Noto (latin subset, variable weight). Other scripts fall back to system fonts. */ -}}
+{{- $range := "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD" }}
+{{- $fonts := slice
+  (dict "family" "Noto Serif" "style" "normal" "file" "fonts/noto-serif-latin.woff2" "preload" true)
+  (dict "family" "Noto Serif" "style" "italic" "file" "fonts/noto-serif-italic-latin.woff2" "preload" false)
+  (dict "family" "Noto Sans" "style" "normal" "file" "fonts/noto-sans-latin.woff2" "preload" true)
+}}
+{{- /* The SIL Open Font License must travel with the fonts: publishing it here puts
+       /fonts/OFL.txt next to the font files in every built site. */ -}}
+{{- $css := "" }}
+{{- with resources.Get "fonts/OFL.txt" }}
+  {{- $css = printf "/* Noto Serif and Noto Sans: Copyright 2022 The Noto Project Authors. Licensed under the SIL Open Font License 1.1: %s */" .RelPermalink }}
+{{- end }}
+{{- range $f := $fonts }}
+  {{- with resources.Get $f.file }}
+    {{- if $f.preload }}
+<link rel="preload" href="{{ .RelPermalink }}" as="font" type="font/woff2" crossorigin>
+    {{- end }}
+    {{- $css = printf "%s@font-face{font-family:'%s';font-style:%s;font-weight:100 900;font-stretch:100%%;font-display:swap;src:url(%s) format('woff2');unicode-range:%s}" $css $f.family $f.style .RelPermalink $range }}
+  {{- end }}
+{{- end }}
+<style>{{ $css | safeCSS }}</style>

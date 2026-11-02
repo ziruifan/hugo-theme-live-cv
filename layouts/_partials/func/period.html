@@ -1,0 +1,13 @@
+{{- /* Formats a period from a map (page params or data item) with start/end or time. */ -}}
+{{- $s := partial "func/date-part.html" (index . "start") }}
+{{- $e := partial "func/date-part.html" (index . "end") }}
+{{- $t := partial "func/date-part.html" (index . "time") }}
+{{- $out := "" }}
+{{- if $t }}
+  {{- $out = $t }}
+{{- else if and $s $e }}
+  {{- $out = cond (eq $s $e) $s (printf "%s – %s" $s $e) }}
+{{- else }}
+  {{- $out = $s | default $e }}
+{{- end }}
+{{- return $out -}}

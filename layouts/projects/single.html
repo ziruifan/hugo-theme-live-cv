@@ -1,0 +1,61 @@
+{{ define "main" }}
+  {{- partial "nameplate.html" (dict "page" .) }}
+<article>
+  {{ partial "article/header.html" (dict "page" . "prefix" (i18n "project") "limit" 2 "link" true) }}
+  <div class="article-body">
+    {{- $collab := partial "func/collaborators.html" . }}
+    {{- $period := partial "func/period.html" .Params }}
+    {{- if or $collab $period }}
+    <div class="article-meta">
+      {{- with $collab }}
+      <span>{{ i18n "collaboratorsLabel" }}: {{ . }}</span>
+      {{- end }}
+      {{- with $period }}
+      <span class="article-meta-end">{{ . }}</span>
+      {{- end }}
+    </div>
+    {{- end }}
+
+    <div class="prose">
+      {{ .Content }}
+    </div>
+
+    {{- with .Params.contributions }}
+    <h2 class="article-heading">{{ i18n "contributions" }}</h2>
+    <ul class="bullets">
+      {{- range . }}
+      <li>{{ $.RenderString . }}</li>
+      {{- end }}
+    </ul>
+    {{- end }}
+
+    {{- with .Params.publications }}
+      {{- $pubs := partial "func/publications.html" $ }}
+      {{- $matched := slice }}
+      {{- range $id := . }}
+        {{- range $pubs.items }}{{ if eq .id $id }}{{ $matched = $matched | append . }}{{ end }}{{ end }}
+      {{- end }}
+      {{- with $matched }}
+    <h2 class="article-heading">{{ $pubs.title | default (i18n "publications") }}</h2>
+    <div class="rows pubs">
+        {{- range . }}
+      {{ partial "publication.html" (dict "item" . "highlight" $pubs.highlight) }}
+        {{- end }}
+    </div>
+      {{- end }}
+    {{- end }}
+  </div>
+</article>
+
+  {{- $more := partial "func/others.html" (dict "page" . "pages" .CurrentSection.RegularPages "count" 3) }}
+  {{- with $more }}
+<section class="more">
+  <h2 class="kicker more-title">{{ i18n "moreProjects" }}</h2>
+  <div class="mini-cards">
+    {{- range . }}
+    {{ partial "project/mini.html" . }}
+    {{- end }}
+  </div>
+</section>
+  {{- end }}
+{{ end }}

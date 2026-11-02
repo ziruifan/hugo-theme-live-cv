@@ -1,0 +1,14 @@
+{{- /* Line below the page: last update on the left, attribution on the right. */ -}}
+{{- /* "Updated …" appears only when params.updated is set (any date Hugo can read, e.g. 2026-11-01). */ -}}
+{{- $updated := "" }}
+{{- with site.Params.updated }}{{ $updated = i18n "updated" (time.AsTime . | time.Format "January 2006") }}{{ end }}
+{{- if or $updated site.Params.attribution }}
+<div class="colophon">
+  <span>{{ $updated }}</span>
+  {{- if site.Params.attribution }}
+  <span class="colophon-credit">
+    {{- i18n "poweredBy" (dict "hugo" `<a href="https://gohugo.io/">Hugo</a>` "theme" `<a href="https://github.com/ziruifan/hugo-theme-live-cv">Live CV</a>`) | safeHTML -}}
+  </span>
+  {{- end }}
+</div>
+{{- end }}

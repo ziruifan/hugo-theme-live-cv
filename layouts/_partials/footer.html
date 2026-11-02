@@ -1,0 +1,7 @@
+{{- $name := partialCached "func/name.html" . }}
+<footer class="paper-footer">
+  <span class="paper-footer-name">{{ $name }}</span>
+  <span class="meta">
+    {{- with site.Copyright }}{{ replace . "{year}" (string now.Year) | markdownify }}{{ else }}Copyright © {{ now.Year }} {{ $name }}{{ end -}}
+  </span>
+</footer>

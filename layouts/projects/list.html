@@ -1,0 +1,9 @@
+{{ define "main" }}
+  {{- partial "nameplate.html" (dict "page" . "title" (partial "func/section-title.html" .)) }}
+  {{- with .Content }}
+<div class="page-intro">{{ . }}</div>
+  {{- end }}
+  {{- with .RegularPages }}
+  {{ partial "project/list.html" (dict "pages" (partial "func/projects-ordered.html" .) "level" 2 "tags" 2 "onPage" true) }}
+  {{- end }}
+{{ end }}

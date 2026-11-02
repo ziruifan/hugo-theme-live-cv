@@ -1,0 +1,21 @@
+{{ define "main" }}
+  {{- $title := .Title }}
+  {{- if .IsSection }}{{ $title = partial "func/section-title.html" . }}{{ end }}
+  {{- partial "nameplate.html" (dict "page" . "title" $title) }}
+  {{- with .Content }}
+<div class="page-intro">{{ . }}</div>
+  {{- end }}
+  {{- $paginator := .Paginate .Pages }}
+<div class="rows rows--loose list-rows">
+  {{- range $paginator.Pages }}
+  {{ partial "news-row.html" (dict "page" . "level" 2 "summary" true) }}
+  {{- end }}
+</div>
+  {{- if gt $paginator.TotalPages 1 }}
+<nav class="list-pager" aria-label="Pagination">
+    {{- with $paginator.Prev }}<a href="{{ .URL }}" rel="prev"><span class="arrow arrow--prev" aria-hidden="true">&lt;</span>{{ i18n "previous" }}</a>{{ else }}<span></span>{{ end }}
+    <span class="meta">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+    {{- with $paginator.Next }}<a href="{{ .URL }}" rel="next">{{ i18n "next" }}<span class="arrow arrow--next" aria-hidden="true">&gt;</span></a>{{ else }}<span></span>{{ end }}
+</nav>
+  {{- end }}
+{{ end }}

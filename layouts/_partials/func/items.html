@@ -1,0 +1,10 @@
+{{- /* Normalizes a data file to a dict with items, title and layout.
+       A data file may be a plain list, or a map with an "items" key. */ -}}
+{{- $d := . }}
+{{- $out := dict "items" slice "title" "" "layout" "" "data" dict }}
+{{- if reflect.IsMap $d }}
+  {{- $out = dict "items" ($d.items | default slice) "title" ($d.title | default "") "layout" ($d.layout | default "") "data" $d }}
+{{- else if reflect.IsSlice $d }}
+  {{- $out = merge $out (dict "items" $d) }}
+{{- end }}
+{{- return $out -}}

@@ -1,0 +1,16 @@
+{{- /* Cover image of a page: params.cover.image, else a bundle image named cover.* or featured.*.
+       Returns dict "src" "alt" "caption", or an empty dict. */ -}}
+{{- $p := . }}
+{{- $c := $p.Params.cover | default dict }}
+{{- if not (reflect.IsMap $c) }}{{ $c = dict "image" $c }}{{ end }}
+{{- $src := "" }}
+{{- with $c.image }}
+  {{- $src = partial "func/resolve-image.html" (dict "path" . "page" $p) }}
+{{- else }}
+  {{- with $p.Resources.GetMatch "{cover,featured}.*" }}{{ $src = . }}{{ end }}
+{{- end }}
+{{- $out := dict }}
+{{- if $src }}
+  {{- $out = dict "src" $src "alt" ($c.alt | default "") "caption" ($c.caption | default "") }}
+{{- end }}
+{{- return $out -}}

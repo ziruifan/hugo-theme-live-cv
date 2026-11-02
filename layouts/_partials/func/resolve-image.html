@@ -1,0 +1,22 @@
+{{- /* Resolves an image path to a resource (page bundle, then assets/), a file in static/, or a URL.
+       Context: dict "path" and optional "page". Returns a resource, a URL string, or "" if not found. */ -}}
+{{- $path := .path }}
+{{- $out := "" }}
+{{- if $path }}
+  {{- $u := urls.Parse $path }}
+  {{- if $u.IsAbs }}
+    {{- $out = $path }}
+  {{- else }}
+    {{- with .page }}{{ with .Resources.Get $path }}{{ $out = . }}{{ end }}{{ end }}
+    {{- if not $out }}{{ with resources.Get $path }}{{ $out = . }}{{ end }}{{ end }}
+    {{- if not $out }}
+      {{- if fileExists (path.Join "static" $path) }}
+        {{- $out = strings.TrimPrefix "/" $path | relURL }}
+      {{- else }}
+        {{- $where := "" }}{{ with .page }}{{ with .File }}{{ $where = printf " (in %s)" .Path }}{{ end }}{{ end }}
+        {{- warnf "Live CV: image %q not found in the page bundle, assets/ or static/%s" $path $where }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- return $out -}}

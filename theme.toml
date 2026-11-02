@@ -1,12 +1,16 @@
 name = 'Live CV'
 license = 'MIT'
-licenselink = 'https://github.com/ziruifan/hugo-theme-live-cv/LICENSE'
-description = 'An online CV theme for Hugo'
+licenselink = 'https://github.com/ziruifan/hugo-theme-live-cv/blob/main/LICENSE'
+description = 'An editorial, academic-style online CV theme for Hugo, with projects, news and publications.'
 
 homepage = 'https://github.com/ziruifan/hugo-theme-live-cv'
-
 demosite = 'https://ziruifan.github.io/hugo-theme-live-cv'
+
+tags = ['academic', 'cv', 'resume', 'portfolio', 'personal', 'responsive', 'dark mode', 'minimal']
+features = ['dark mode', 'responsive', 'print stylesheet', 'publications', 'projects', 'news', 'data-driven sections', 'image processing']
+
+min_version = '0.146.0'
 
 [author]
   name = 'Fan Zirui'
-  homepage = 'zirui.fun'
+  homepage = 'https://zirui.fun'

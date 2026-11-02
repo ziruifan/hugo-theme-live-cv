@@ -1,0 +1,13 @@
+{{- /* Labeled groups. Fields: category, items (a list or a Markdown string). */ -}}
+<div class="skills">
+  {{- range .items }}
+  <div>
+    <div class="kicker">{{ .category }}</div>
+    {{- if reflect.IsSlice .items }}
+    <div>{{ delimit .items ", " }}</div>
+    {{- else }}
+    <div>{{ .items | markdownify }}</div>
+    {{- end }}
+  </div>
+  {{- end }}
+</div>

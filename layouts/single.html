@@ -1,0 +1,41 @@
+{{ define "main" }}
+  {{- partial "nameplate.html" (dict "page" .) }}
+<article>
+  {{ partial "article/header.html" (dict "page" . "link" true) }}
+  <div class="article-body">
+    {{- $tags := .GetTerms "tags" }}
+    {{- if or $tags (not .Date.IsZero) }}
+    <div class="article-meta">
+      {{- with $tags }}
+      <span>{{ i18n "tagsLabel" }}: {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}</span>
+      {{- end }}
+      {{- if not .Date.IsZero }}
+      <span class="article-meta-end"><time datetime="{{ .Date | time.Format "2006-01-02" }}">{{ .Date | time.Format ":date_long" }}</time></span>
+      {{- end }}
+    </div>
+    {{- end }}
+    <div class="prose">
+      {{ .Content }}
+    </div>
+    {{- with .Params.link }}
+    <p class="article-source"><a href="{{ . }}">{{ i18n "readOriginal" }} →</a></p>
+    {{- end }}
+  </div>
+</article>
+  {{- /* More from the same section, continuing in list order. */ -}}
+  {{- with .CurrentSection }}
+    {{- if not .IsHome }}
+      {{- $more := partial "func/others.html" (dict "page" $ "pages" .RegularPages "count" 3) }}
+      {{- with $more }}
+<section class="more">
+  <h2 class="kicker more-title">{{ i18n "moreIn" (dict "Title" (partial "func/section-title.html" $.CurrentSection)) }}</h2>
+  <div class="rows rows--loose">
+        {{- range . }}
+    {{ partial "news-row.html" (dict "page" . "level" 3) }}
+        {{- end }}
+  </div>
+</section>
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{ end }}

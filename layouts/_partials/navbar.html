@@ -1,0 +1,20 @@
+{{- /* Section index in the margin left of the page, generated from the home-page sections that
+       are shown. It stays in view while scrolling and is hidden on narrow screens.
+       On the home page the links jump down the page; elsewhere they lead to the same place on the
+       home page. Turn it off with params.navbar = false. */ -}}
+{{- if ne site.Params.navbar false }}
+  {{- $items := slice }}
+  {{- range partialCached "func/home-sections.html" . "home-sections" }}
+    {{- if ne .key "about" }}{{ $items = $items | append . }}{{ end }}
+  {{- end }}
+  {{- if gt (len $items) 1 }}
+    {{- $base := cond .IsHome "" site.Home.RelPermalink }}
+<nav class="navbar" aria-label="{{ i18n "sectionsNav" }}">
+  <ul>
+    {{- range $items }}
+    <li><a href="{{ $base }}#{{ .anchor }}">{{ .title }}</a></li>
+    {{- end }}
+  </ul>
+</nav>
+  {{- end }}
+{{- end }}

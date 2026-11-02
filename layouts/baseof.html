@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{{- $scheme := lower (site.Params.colorScheme | default "auto") }}
+<html lang="{{ site.Language.LanguageCode | default "en" }}" dir="{{ site.Language.LanguageDirection | default "ltr" }}"{{ if in (slice "light" "dark") $scheme }} data-theme="{{ $scheme }}"{{ end }}>
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body>
+  <div class="desk" id="top">
+    <div class="frame">
+      {{ partial "topbar.html" . }}
+      <div class="sheet">
+        {{- partial "navbar.html" . }}
+        <main class="paper">
+          {{ block "main" . }}{{ end }}
+          {{ partial "footer.html" . }}
+        </main>
+        {{- partial "scroll-buttons.html" . }}
+      </div>
+      {{ partial "colophon.html" . }}
+    </div>
+    <div id="bottom"></div>
+  </div>
+</body>
+</html>

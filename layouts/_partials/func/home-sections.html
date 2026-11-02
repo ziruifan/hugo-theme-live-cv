@@ -1,0 +1,47 @@
+{{- /* The home-page sections that are enabled and have content, in order.
+       Returns a list of dicts: key, width, title, anchor. Used by the home page and the nav bar,
+       so both always agree. Call with partialCached (it only depends on site data). */ -}}
+{{- $out := slice }}
+{{- range site.Params.home.sections }}
+  {{- /* Each entry is a key ('news'), a map ({ key = 'grants', width = 'half', enable = false }),
+         or the older nested list of keys shown side by side. */ -}}
+  {{- $entries := slice }}
+  {{- if reflect.IsMap . }}
+    {{- $entries = slice . }}
+  {{- else if reflect.IsSlice . }}
+    {{- range . }}{{ $entries = $entries | append (dict "key" . "width" "half") }}{{ end }}
+  {{- else }}
+    {{- $entries = slice (dict "key" .) }}
+  {{- end }}
+  {{- range $entries }}
+    {{- if not (eq .enable false) }}
+      {{- $key := .key }}
+      {{- $width := .width | default "full" }}
+      {{- if not (in (slice "full" "half") $width) }}
+        {{- errorf "Live CV: section %q has width %q (expected 'full' or 'half')" $key $width }}
+      {{- end }}
+      {{- $title := "" }}
+      {{- $has := false }}
+      {{- if eq $key "about" }}
+        {{- with site.Data.profile }}{{ $has = or .portrait .bio .interests }}{{ end }}
+      {{- else if in (slice "news" "projects") $key }}
+        {{- with site.GetPage (printf "/%s" $key) }}
+          {{- $has = gt (len .RegularPages) 0 }}
+          {{- $title = partial "func/section-title.html" . }}
+        {{- end }}
+      {{- else if eq $key "publications" }}
+        {{- $pubs := partial "func/publications.html" . }}
+        {{- $has = gt (len $pubs.items) 0 }}
+        {{- $title = $pubs.title | default (i18n "publications") }}
+      {{- else }}
+        {{- $d := partial "func/items.html" (index site.Data $key) }}
+        {{- $has = gt (len $d.items) 0 }}
+        {{- $title = $d.title | default (i18n $key) | default (humanize $key) }}
+      {{- end }}
+      {{- if $has }}
+        {{- $out = $out | append (dict "key" $key "width" $width "title" $title "anchor" (anchorize $key)) }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- return $out -}}

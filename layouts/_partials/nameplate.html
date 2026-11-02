@@ -1,0 +1,8 @@
+{{- /* Masthead for inner pages. Context: dict "page" and optional "title" (renders an h1). */ -}}
+{{- $name := partialCached "func/name.html" .page }}
+<header class="nameplate{{ if .title }} masthead--list{{ end }}">
+  <a class="nameplate-link" href="{{ site.Home.RelPermalink }}">{{ $name }}</a>
+  {{- with .title }}
+  <h1 class="page-title">{{ . }}</h1>
+  {{- end }}
+</header>

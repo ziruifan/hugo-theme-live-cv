@@ -1,0 +1,7 @@
+# Fields: category, items (a list or a Markdown string)
+- category: Methods
+  items: [Ritual reconstruction, Hex spectroscopy, Field containment]
+- category: Instruments
+  items: [Scrying glass, Resonance tuning forks, Warding chalk]
+- category: Languages
+  items: [English (native), Old Runic (fluent), Infernal (reading)]

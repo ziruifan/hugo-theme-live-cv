@@ -1,0 +1,11 @@
+{{- /* "Top" and "Bottom" links in the margin right of the page. They stay near the bottom of the
+       window while scrolling and are hidden on narrow screens. Turn them off with
+       params.scrollButtons = false. */ -}}
+{{- if ne site.Params.scrollButtons false }}
+<nav class="scroll-buttons" aria-label="{{ i18n "scrollNav" }}">
+  <div class="scroll-buttons-inner">
+    <a href="#top"><span class="arrow arrow--up" aria-hidden="true">&lt;</span>{{ i18n "scrollTop" }}</a>
+    <a href="#bottom"><span class="arrow arrow--down" aria-hidden="true">&gt;</span>{{ i18n "scrollBottom" }}</a>
+  </div>
+</nav>
+{{- end }}

@@ -1,0 +1,10 @@
+# A data file can also be a map with a custom title and layout:
+#   title: Service        (defaults to the translated file name)
+#   layout: list          (entries, stacked, honors, talks, list, skills or people)
+#   items: [...]
+title: Professional Service
+layout: list
+items:
+  - 'Reviewer: *Journal of Occult Ethics*, *Arcane Horizons*'
+  - Student organizer, Annual Dark Arts Summit, 2023
+  - Member, Guild of Responsible Practitioners

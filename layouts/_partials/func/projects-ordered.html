@@ -1,0 +1,5 @@
+{{- /* Projects with main = true first, then the others, each in list order. */ -}}
+{{- $out := slice }}
+{{- range where . "Params.main" true }}{{ $out = $out | append . }}{{ end }}
+{{- range where . "Params.main" "!=" true }}{{ $out = $out | append . }}{{ end }}
+{{- return $out -}}

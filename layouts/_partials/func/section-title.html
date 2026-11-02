@@ -1,0 +1,4 @@
+{{- /* Title of a content section: its _index.md title, else the translated section name. */ -}}
+{{- $out := .Title }}
+{{- if not .File }}{{ $out = i18n .Section | default .Title }}{{ end }}
+{{- return $out -}}

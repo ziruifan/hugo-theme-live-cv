@@ -1,0 +1,7 @@
+{{- /* Loads data/publications.* -> dict "items" "highlight" (list of names) "title". */ -}}
+{{- $d := partial "func/items.html" site.Data.publications }}
+{{- $hl := slice }}
+{{- with $d.data.highlight }}
+  {{- if reflect.IsSlice . }}{{ $hl = . }}{{ else }}{{ $hl = slice . }}{{ end }}
+{{- end }}
+{{- return dict "items" $d.items "highlight" $hl "title" $d.title -}}

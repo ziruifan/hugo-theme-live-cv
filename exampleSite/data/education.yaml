@@ -1,0 +1,13 @@
+# Fields: title, organization, start, end (or time), url, description (Markdown)
+- title: Ph.D. in Arcane Studies
+  organization: Institute for Occult Sciences and Mysticism, Mysthaven
+  start: 2019
+  end: Present
+- title: Master of Dark Arts and Esoteric Knowledge
+  organization: Sorcerum University, Ravenmoor
+  start: 2017
+  end: 2019
+- title: Bachelor of Arcane Practices and Ritual Theory
+  organization: Eldergrove Academy, Thornbury
+  start: 2013
+  end: 2017

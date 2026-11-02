@@ -1,0 +1,45 @@
+# Names to set in bold wherever they appear in a citation.
+highlight: Grimveil, E.
+
+# Fields:
+#   citation  Markdown, in any citation style (use *…* for italics)
+#   type      group heading; groups appear in order of first use
+#   id        referenced from a project's `publications` list
+#   selected  show on the home page (if no entry is selected, all are shown)
+#   doi       adds a doi.org link
+#   links     extra links, e.g. [{name: PDF, url: …}]
+items:
+  - id: shadow2023
+    type: Journal Articles
+    selected: true
+    citation: 'Grimveil, E., Thornwell, E., & Elyndris, M. (2023). Shadows unseen: Exploring ethical implications in high-level hexes. *Journal of Occult Ethics*, 14(2), 113–140.'
+    doi: 55.1186/1471-2588-12-113
+  - id: conjured2023
+    type: Journal Articles
+    selected: true
+    citation: 'Grimveil, E., & Varrow, S. (2023). Conjured allies: Examining protective applications of summoned entities. *Occult Sciences Review*, 31(4), 445–471.'
+    doi: 55.6758/3276-4347-22-445
+  - id: hex2022
+    type: Journal Articles
+    selected: true
+    citation: 'Nightshade, E., & Grimveil, E. (2022). Hex transference and nullification: A study on curse transmission mediums. *Arcane Horizons: Studies in Forbidden Knowledge*, 9(1), 54–79.'
+    doi: 55.8494/5725-2364-56-542
+  - id: veiled2021
+    type: Journal Articles
+    citation: 'Grimveil, E., & Elyndris, M. (2021). Veiled entities: Demonic invocation and its risks. *Arcane Horizons: Studies in Forbidden Knowledge*, 8(3), 223–248.'
+    doi: 55.3547/8972-2238-23-594
+  - id: securing2021
+    type: Journal Articles
+    selected: true
+    citation: 'Grimveil, E. (2021). Securing the shadows: Containment protocols for cursed artifacts. *Journal of Dark Relic Studies*, 22(1), 11–33.'
+    doi: 55.6978/5795-5738-2211-333
+  - id: summit2024
+    type: Conference Proceedings
+    selected: true
+    citation: 'Grimveil, E. (2024). Double-enchantment barriers for volatile relics. In *Proceedings of the Annual Dark Arts Summit* (pp. 87–96). Mysthaven Press.'
+    links:
+      - name: Slides
+        url: https://example.org/slides.pdf
+  - id: beyond2020
+    type: Conference Proceedings
+    citation: 'Grimveil, E. (2020). Beyond the visible: How dark matter affects ancient hexes. In *Proceedings of the Symposium on Arcane Physics* (pp. 201–210).'

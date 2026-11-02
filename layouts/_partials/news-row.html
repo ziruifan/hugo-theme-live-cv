@@ -1,0 +1,21 @@
+{{- /* A dated row. Context dict: page, level (2 or 3), summary (bool). */ -}}
+{{- $p := .page }}
+{{- $url := $p.Params.link | default $p.RelPermalink }}
+<article class="news-row">
+  <div class="news-date">
+    {{- with partial "func/period.html" $p.Params }}{{ . }}
+    {{- else }}{{ if not $p.Date.IsZero }}<time datetime="{{ $p.Date | time.Format "2006-01-02" }}">{{ $p.Date | time.Format ":date_medium" }}</time>{{ end }}
+    {{- end -}}
+  </div>
+  <div class="news-body">
+    {{ partial "kicker.html" (dict "page" $p "limit" 1) }}
+    {{- if eq .level 2 }}
+    <h2 class="news-title"><a href="{{ $url }}">{{ $p.Title }}</a></h2>
+    {{- else }}
+    <h3 class="news-title"><a href="{{ $url }}">{{ $p.Title }}</a></h3>
+    {{- end }}
+    {{- if .summary }}{{ with partial "func/dek.html" (dict "page" $p "auto" true) }}
+    <p class="news-summary">{{ . }}</p>
+    {{- end }}{{ end }}
+  </div>
+</article>

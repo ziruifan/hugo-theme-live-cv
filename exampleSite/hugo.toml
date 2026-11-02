@@ -1,0 +1,52 @@
+baseURL = 'https://ziruifan.github.io/hugo-theme-live-cv/'
+languageCode = 'en'
+title = 'Evander Grimveil'
+theme = 'hugo-theme-live-cv'
+
+# Footer text. Markdown is allowed and {year} is replaced with the current year.
+# Leave unset to show "Copyright © <year> <name>".
+copyright = 'Copyright © {year} Evander Grimveil'
+
+[params]
+  # Meta description for search engines (defaults to the bio in data/profile.yaml).
+  description = 'Evander Grimveil is a PhD candidate in Arcane Studies at the Institute for Occult Sciences and Mysticism.'
+
+  # 'auto' (follow the system), 'light' or 'dark'.
+  colorScheme = 'auto'
+
+  # Background color around the page in light mode, e.g. '#FFFFFF', '#F5F2EA', '#E4E4E4'.
+  # desk = '#EEEEEE'
+
+  # Date shown as "Updated …" below the page; hidden when not set.
+  updated = 2026-11-01
+
+  # Adds a "Download PDF" link at the top of the home page. Put the file in static/.
+  # pdf = 'cv.pdf'
+
+  [params.home]
+    news = 4      # latest news items on the home page
+    projects = 0  # projects on the home page; 0 shows all
+
+    # Home page sections, in order. `key` is 'about', 'news', 'projects',
+    # 'publications', or the name of a data file (data/<key>.yaml).
+    #   width = 'full' (default) or 'half'; consecutive half-width sections sit side by side.
+    #   enable = false hides a section without removing it from the list.
+    sections = [
+      { key = 'about' },
+      { key = 'news' },
+      { key = 'education' },
+      { key = 'appointments' },
+      { key = 'publications' },
+      { key = 'projects' },
+      { key = 'grants', width = 'half' },
+      { key = 'honors', width = 'half' },
+      { key = 'presentations' },
+      { key = 'teaching', width = 'half' },
+      { key = 'service', width = 'half' },
+      { key = 'skills' },
+      { key = 'people' },
+    ]
+
+# Lets a standalone image with a title render as a figure with a caption.
+[markup.goldmark.parser]
+  wrapStandAloneImageWithinParagraph = false

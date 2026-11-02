@@ -1,0 +1,10 @@
+{{- /* Formats one date value: a time, a year/string, or "present". */ -}}
+{{- $v := . }}
+{{- $out := "" }}
+{{- if eq (printf "%T" $v) "time.Time" }}
+  {{- $out = $v | time.Format "Jan 2006" }}
+{{- else if $v }}
+  {{- $out = string $v }}
+  {{- if eq (lower $out) "present" }}{{ $out = i18n "present" }}{{ end }}
+{{- end }}
+{{- return $out -}}

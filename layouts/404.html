@@ -1,0 +1,20 @@
+{{ define "main" }}
+  {{- partial "nameplate.html" (dict "page" .) }}
+<article>
+  <header class="article-head">
+    <h1 class="article-title">{{ i18n "notFoundTitle" }}</h1>
+  </header>
+  <div class="article-body prose">
+    <p>{{ i18n "notFoundSalutation" }}</p>
+    <p>{{ i18n "notFoundBody" }}</p>
+    <p>{{ i18n "notFoundNext" }}</p>
+    <ul>
+      <li>{{ i18n "notFoundVerify" }}</li>
+      <li>{{ i18n "notFoundHome" site.Home.RelPermalink | safeHTML }}</li>
+      <li>{{ i18n "notFoundAdmin" }}</li>
+    </ul>
+    <p>{{ i18n "notFoundThanks" }}</p>
+    <p>{{ i18n "notFoundSignoff" | safeHTML }}</p>
+  </div>
+</article>
+{{ end }}

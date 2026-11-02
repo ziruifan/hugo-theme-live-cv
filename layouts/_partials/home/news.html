@@ -1,0 +1,21 @@
+{{- /* Context: dict "class", "title", "anchor". */ -}}
+{{- $class := .class }}
+{{- $title := .title }}
+{{- $anchor := .anchor }}
+{{- with site.GetPage "/news" }}
+  {{- $sec := . }}
+  {{- $pages := .RegularPages }}
+  {{- $n := site.Params.home.news | default 4 }}
+  {{- with $pages }}
+<section class="{{ $class }}" id="{{ $anchor }}">
+  <div class="section-head">
+    <h2 class="section-title"><a href="{{ $sec.RelPermalink }}">{{ $title }}</a></h2>
+  </div>
+  <div class="rows rows--loose">
+    {{- range first $n $pages }}
+    {{ partial "news-row.html" (dict "page" . "level" 3) }}
+    {{- end }}
+  </div>
+</section>
+  {{- end }}
+{{- end }}

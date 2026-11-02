@@ -1,0 +1,24 @@
+{{- $p := site.Data.profile | default dict }}
+{{- if or $p.portrait $p.bio $p.interests }}
+<section class="about" id="about">
+  {{- with $p.portrait }}
+  <figure class="about-portrait">
+    {{- $src := partial "func/resolve-image.html" (dict "path" .) }}
+    {{- partial "image.html" (dict "src" $src "alt" (i18n "portraitOf" (partialCached "func/name.html" $)) "sizes" "200px" "widths" (slice 240 400 600) "eager" true) -}}
+  </figure>
+  {{- end }}
+  {{- with $p.bio }}
+  <div class="about-bio">{{ $.RenderString (dict "display" "block") . }}</div>
+  {{- end }}
+  {{- with $p.interests }}
+  <div class="about-side">
+    <h2 class="kicker" id="interests">{{ i18n "researchInterests" }}</h2>
+    <ul>
+      {{- range . }}
+      <li>{{ . | markdownify }}</li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
+</section>
+{{- end }}

@@ -1,0 +1,34 @@
+{{- /* Renders one home-page section. Context: dict key, width (full or half), title, anchor, page
+       (an entry from func/home-sections.html). */ -}}
+{{- $key := .key }}
+{{- $class := printf "section section--%s" .width }}
+{{- $ctx := dict "class" $class "title" .title "anchor" .anchor }}
+{{- $layouts := dict
+  "education" "entries" "appointments" "entries" "employment" "entries"
+  "grants" "stacked" "teaching" "stacked"
+  "honors" "honors" "awards" "honors"
+  "presentations" "talks" "talks" "talks"
+  "service" "list"
+  "skills" "skills"
+  "collaborators" "people" "people" "people"
+}}
+{{- if eq $key "about" }}
+  {{- partial "home/about.html" .page }}
+{{- else if eq $key "news" }}
+  {{- partial "home/news.html" $ctx }}
+{{- else if eq $key "projects" }}
+  {{- partial "home/projects.html" $ctx }}
+{{- else if eq $key "publications" }}
+  {{- partial "home/publications.html" $ctx }}
+{{- else }}
+  {{- $d := partial "func/items.html" (index site.Data $key) }}
+  {{- $layout := $d.layout | default (index $layouts $key) | default "entries" }}
+  {{- $tpl := printf "sections/%s.html" $layout }}
+  {{- if not (templates.Exists (printf "_partials/%s" $tpl)) }}
+    {{- errorf "Live CV: section %q uses unknown layout %q (expected entries, stacked, honors, talks, list, skills or people)" $key $layout }}
+  {{- end }}
+<section class="{{ $class }}" id="{{ .anchor }}">
+  <div class="section-head"><h2 class="section-title">{{ .title }}</h2></div>
+  {{ partial $tpl (dict "key" $key "items" $d.items "data" $d.data) }}
+</section>
+{{- end }}

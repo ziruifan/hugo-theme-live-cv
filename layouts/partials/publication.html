@@ -1,6 +1,0 @@
-{{ $name := site.Params.Publications.Name }}
-{{ (replaceRE $name (printf "<strong>%s</strong>" $name) .citation) | safeHTML }}
-{{ with .doi }}
-    {{ $url := printf "%s%s" "http://doi.org/" . }}
-    doi: <a href="{{ $url | safeURL }}">{{ . }}</a>
-{{ end }}

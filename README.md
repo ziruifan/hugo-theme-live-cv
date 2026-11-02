@@ -6,7 +6,7 @@
 
 A live demo, built from [exampleSite](exampleSite) and featuring the fictional Evander Grimveil, is hosted on [GitHub Pages](https://ziruifan.github.io/hugo-theme-live-cv).
 
-![Screenshot](images/screenshot.png)
+![Preview](images/preview.png)
 
 ## Features
 

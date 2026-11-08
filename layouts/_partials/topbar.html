@@ -12,9 +12,26 @@
     {{- end }}
   </nav>
   {{- if .IsHome }}
+    {{- /* "Download PDF", in order of preference:
+           1. params.pdf, a PDF file you provide;
+           2. static/cv.pdf, made by the theme's tools/cv-pdf.py from the printable CV (cv/);
+           3. with params.printPDF, the printable CV opened with the print dialog, so the
+              visitor can save it as a PDF. */ -}}
+    {{- $pdf := "" }}
+    {{- $hint := "" }}
     {{- with site.Params.pdf }}
+      {{- $pdf = . | relURL }}
+    {{- else }}
+      {{- if fileExists "static/cv.pdf" }}
+        {{- $pdf = "cv.pdf" | relURL }}
+      {{- else if and site.Params.printPDF (ne site.Params.cv.enable false) }}
+        {{- $pdf = "cv/#print" | relURL }}
+        {{- $hint = i18n "printPDFHint" }}
+      {{- end }}
+    {{- end }}
+    {{- with $pdf }}
   <nav class="topbar-nav" aria-label="Downloads">
-    <a href="{{ . | relURL }}">{{ i18n "downloadPDF" }}</a>
+    <a href="{{ . }}"{{ with $hint }} title="{{ . }}"{{ end }}>{{ i18n "downloadPDF" }}</a>
   </nav>
     {{- end }}
   {{- else if and .IsPage .CurrentSection (not .CurrentSection.IsHome) }}

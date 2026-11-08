@@ -1,0 +1,28 @@
+{{- /* One section of the printable CV. Context: an entry from func/sections.html plus "page".
+       Data sections reuse the home page layouts; cv.css restyles them for print. */ -}}
+{{- $key := .key }}
+{{- $ctx := dict "class" "section" "title" .title "anchor" .anchor }}
+{{- if eq $key "about" }}
+  {{- with site.Data.profile.bio }}
+<section class="section" id="{{ $.anchor }}">
+  <div class="section-head"><h2 class="section-title">{{ $.title }}</h2></div>
+  <div class="cv-bio">{{ $.page.RenderString (dict "display" "block") . }}</div>
+</section>
+  {{- end }}
+{{- else if eq $key "interests" }}
+<section class="section" id="{{ .anchor }}">
+  <div class="section-head"><h2 class="section-title">{{ .title }}</h2></div>
+  <p class="cv-interests">
+    {{- range $i, $t := site.Data.profile.interests }}{{ if $i }}<span class="sep" aria-hidden="true">·</span>{{ end }}<span>{{ $t | markdownify }}</span>{{ end -}}
+  </p>
+</section>
+{{- else if eq $key "projects" }}
+  {{- partial "cv/projects.html" $ctx }}
+{{- else if eq $key "publications" }}
+  {{- partial "home/publications.html" (merge $ctx (dict "all" true)) }}
+{{- else if eq $key "news" }}
+  {{- /* News doesn't belong on a CV; list it in params.cv.sections only if you really want it. */ -}}
+  {{- partial "home/news.html" $ctx }}
+{{- else }}
+  {{- partial "home/section.html" (merge . (dict "width" "full")) }}
+{{- end }}

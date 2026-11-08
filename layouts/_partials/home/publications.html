@@ -1,11 +1,12 @@
-{{- /* Context: dict "class", "title", "anchor". */ -}}
+{{- /* Context: dict "class", "title", "anchor", and optionally "all" (list every publication,
+       as on the printable CV, instead of only the selected ones). */ -}}
 {{- $class := .class }}
 {{- $title := .title }}
 {{- $anchor := .anchor }}
 {{- $pubs := partial "func/publications.html" . }}
 {{- /* Show entries marked selected: true; if none are marked, show all. */ -}}
 {{- $items := where $pubs.items "selected" true }}
-{{- if not $items }}{{ $items = $pubs.items }}{{ end }}
+{{- if or (not $items) .all }}{{ $items = $pubs.items }}{{ end }}
 {{- with $items }}
   {{- $types := slice }}
   {{- range . }}

@@ -1,0 +1,55 @@
+{{- /* The printable CV: a standalone page published at cv/index.html (see cv/publish.html).
+       It uses the same data as the home page, laid out as a conventional CV: a compact single
+       column, every publication, and no news, photos or icons. Sections: params.cv.sections.
+       Context: the home page. */ -}}
+{{- $name := partialCached "func/name.html" . }}
+{{- $p := site.Data.profile | default dict }}
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode | default "en" }}" dir="{{ site.Language.LanguageDirection | default "ltr" }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{ $name }} – {{ i18n "cvTitle" }}</title>
+{{ partialCached "head/fonts.html" . }}
+{{- with resources.Get "css/cv.css" }}
+<style>{{ .Content | safeCSS }}</style>
+{{- end }}
+{{- /* Paper size and the running footer (name on the left, page numbers on the right). */ -}}
+{{- $paper := site.Params.cv.paper | default "A4" }}
+<style>@page { size: {{ $paper | safeCSS }}; @bottom-left { content: "{{ replace (printf "%s · %s" $name (i18n "cvTitle")) `"` `\"` | safeCSS }}"; } }</style>
+</head>
+<body>
+<header class="cv-head">
+  <h1>{{ $name }}</h1>
+  {{- $title := slice }}
+  {{- with $p.position }}{{ $title = $title | append (markdownify .) }}{{ end }}
+  {{- with $p.affiliation }}{{ $title = $title | append (markdownify .) }}{{ end }}
+  {{- with $title }}
+  <p class="cv-title">{{ delimit . ", " }}</p>
+  {{- end }}
+  {{- $sep := "·" }}
+  {{- if isset site.Params "contactseparator" }}{{ $sep = site.Params.contactSeparator }}{{ end }}
+  {{- range $line := slice $p.contacts $p.links }}
+    {{- with $line }}
+  <p class="contacts">
+      {{- range $i, $c := . }}
+        {{- if $i }}<span class="sep" aria-hidden="true">{{ $sep }}</span>{{ end }}
+        {{- partial "contact-item.html" $c }}
+      {{- end -}}
+  </p>
+    {{- end }}
+  {{- end }}
+</header>
+<main>
+  {{- range partialCached "func/sections.html" (site.Params.cv.sections | default slice) "cv" }}
+  {{ partial "cv/section.html" (merge . (dict "page" $)) }}
+  {{- end }}
+</main>
+{{- with site.Params.updated }}
+<p class="cv-updated">{{ i18n "updated" (time.AsTime . | time.Format "January 2006") }}</p>
+{{- end }}
+{{- /* Opened from the "Download PDF" link with params.printPDF: show the print dialog. */ -}}
+<script>if (location.hash === '#print') { window.addEventListener('load', function () { window.print(); }); }</script>
+</body>
+</html>

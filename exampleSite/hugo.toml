@@ -20,8 +20,11 @@ copyright = 'Copyright © {year} Evander Grimveil'
   # Date shown as "Updated …" below the page; hidden when not set.
   updated = 2026-11-01
 
-  # Adds a "Download PDF" link at the top of the home page. Put the file in static/.
-  # pdf = 'cv.pdf'
+  # "Download PDF" at the top of the home page. This example uses static/cv.pdf, made with
+  #   python ../tools/cv-pdf.py -- --themesDir ../..
+  # Use a PDF of your own with pdf = 'my-cv.pdf', or let visitors print the cv/ page with
+  # printPDF = true.
+  # pdf = 'my-cv.pdf'
 
   [params.home]
     news = 4      # latest news items on the home page

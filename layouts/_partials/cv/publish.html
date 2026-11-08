@@ -1,0 +1,7 @@
+{{- /* Publishes the printable CV at cv/index.html, built from the home page.
+       The theme's tools/cv-pdf.py turns it into static/cv.pdf. Turn it off with params.cv.enable = false.
+       Context: the home page. */ -}}
+{{- if ne site.Params.cv.enable false }}
+  {{- $html := partial "cv/page.html" . }}
+  {{- (resources.FromString "cv/index.html" $html).Publish }}
+{{- end -}}

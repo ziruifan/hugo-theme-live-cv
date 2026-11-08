@@ -1,8 +1,9 @@
-{{- /* The home-page sections that are enabled and have content, in order.
-       Returns a list of dicts: key, width, title, anchor. Used by the home page and the nav bar,
-       so both always agree. Call with partialCached (it only depends on site data). */ -}}
+{{- /* The sections of a section list (params.home.sections or params.cv.sections) that are
+       enabled and have content, in order. Context: the list.
+       Returns a list of dicts: key, width, title, anchor. Used by the home page, the nav bar and
+       the printable CV, so they always agree. Call with partialCached and a variant per list. */ -}}
 {{- $out := slice }}
-{{- range site.Params.home.sections }}
+{{- range . }}
   {{- /* Each entry is a key ('news'), a map ({ key = 'grants', width = 'half', enable = false }),
          or the older nested list of keys shown side by side. */ -}}
   {{- $entries := slice }}
@@ -24,6 +25,10 @@
       {{- $has := false }}
       {{- if eq $key "about" }}
         {{- with site.Data.profile }}{{ $has = or .portrait .bio .interests }}{{ end }}
+        {{- $title = i18n "profile" }}
+      {{- else if eq $key "interests" }}
+        {{- with site.Data.profile }}{{ $has = gt (len (.interests | default slice)) 0 }}{{ end }}
+        {{- $title = i18n "researchInterests" }}
       {{- else if in (slice "news" "projects") $key }}
         {{- with site.GetPage (printf "/%s" $key) }}
           {{- $has = gt (len .RegularPages) 0 }}

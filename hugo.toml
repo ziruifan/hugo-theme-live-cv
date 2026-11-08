@@ -23,6 +23,31 @@
   # "Top" and "Bottom" links in the margin right of the page (wide screens only).
   scrollButtons = true
 
+  # A "Download PDF" link at the top of the home page. With no PDF of your own (pdf = '…'),
+  # run the theme's tools/cv-pdf.py to make static/cv.pdf, or set printPDF = true to let
+  # visitors print the CV page themselves.
+  printPDF = false
+
+  # The printable CV, published at cv/ and used for the PDF: a conventional single-column
+  # CV made from the same data. Sections use the same format as params.home.sections
+  # ('interests' lists your research interests; 'about' adds your bio).
+  [params.cv]
+    enable = true
+    paper = 'A4'            # or 'letter'
+    sections = [
+      'interests',
+      'education',
+      'appointments',
+      'publications',
+      'projects',
+      'grants',
+      'honors',
+      'presentations',
+      'teaching',
+      'service',
+      'skills',
+    ]
+
   [params.home]
     # Latest news items on the home page.
     news = 4

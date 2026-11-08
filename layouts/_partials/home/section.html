@@ -1,5 +1,5 @@
 {{- /* Renders one home-page section. Context: dict key, width (full or half), title, anchor, page
-       (an entry from func/home-sections.html). */ -}}
+       (an entry from func/sections.html). */ -}}
 {{- $key := .key }}
 {{- $class := printf "section section--%s" .width }}
 {{- $ctx := dict "class" $class "title" .title "anchor" .anchor }}
@@ -14,6 +14,15 @@
 }}
 {{- if eq $key "about" }}
   {{- partial "home/about.html" .page }}
+{{- else if eq $key "interests" }}
+<section class="{{ $class }}" id="{{ .anchor }}">
+  <div class="section-head"><h2 class="section-title">{{ .title }}</h2></div>
+  <ul class="bullets">
+    {{- range site.Data.profile.interests }}
+    <li>{{ . | markdownify }}</li>
+    {{- end }}
+  </ul>
+</section>
 {{- else if eq $key "news" }}
   {{- partial "home/news.html" $ctx }}
 {{- else if eq $key "projects" }}

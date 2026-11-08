@@ -4,7 +4,7 @@
        home page. Turn it off with params.navbar = false. */ -}}
 {{- if ne site.Params.navbar false }}
   {{- $items := slice }}
-  {{- range partialCached "func/home-sections.html" . "home-sections" }}
+  {{- range partialCached "func/sections.html" site.Params.home.sections "home" }}
     {{- if ne .key "about" }}{{ $items = $items | append . }}{{ end }}
   {{- end }}
   {{- if gt (len $items) 1 }}

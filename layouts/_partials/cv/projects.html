@@ -1,0 +1,25 @@
+{{- /* Projects on the printable CV: title and period, then the one-line summary. No photos.
+       Main projects come first, as on the home page. Context: dict "class", "title", "anchor". */ -}}
+{{- $ctx := . }}
+{{- with site.GetPage "/projects" }}
+  {{- with .RegularPages }}
+<section class="section" id="{{ $ctx.anchor }}">
+  <div class="section-head"><h2 class="section-title">{{ $ctx.title }}</h2></div>
+  <div class="rows">
+    {{- range partial "func/projects-ordered.html" . }}
+    <div class="item">
+      <div class="item-main">
+        <div class="entry-title"><a href="{{ .Permalink }}">{{ .Title }}</a></div>
+        {{- with partial "func/dek.html" (dict "page" . "auto" true) }}
+        <div class="cv-summary">{{ . }}</div>
+        {{- end }}
+      </div>
+      {{- with partial "func/period.html" .Params }}
+      <div class="date">{{ . }}</div>
+      {{- end }}
+    </div>
+    {{- end }}
+  </div>
+</section>
+  {{- end }}
+{{- end }}

@@ -1,0 +1,222 @@
+/* ==========================================================================
+   Live CV — printable CV (cv/index.html, turned into cv.pdf by tools/cv-pdf.py)
+   A conventional single-column CV. It reuses the home page's section markup
+   (.section, .rows, .item, .date, .pub, ...) and restyles it for paper.
+   ========================================================================== */
+
+@page {
+  margin: 16mm 17mm 18mm;
+
+  @bottom-right {
+    content: counter(page) " / " counter(pages);
+    font: 8pt 'Noto Sans', system-ui, sans-serif;
+    color: #666;
+  }
+
+  @bottom-left {
+    font: 8pt 'Noto Sans', system-ui, sans-serif;
+    color: #666;
+  }
+}
+
+:root {
+  --ink: #111;
+  --ink-2: #333;
+  --muted: #555;
+  --rule: #111;
+  --serif: 'Noto Serif', Georgia, 'Times New Roman', serif;
+  --sans: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 10pt;
+  line-height: 1.4;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body { margin: 0; }
+
+/* On screen, show the CV as a sheet of paper. */
+@media screen {
+  html { background: #e9e9e9; }
+
+  body {
+    max-width: 210mm;
+    margin: 24px auto;
+    padding: 16mm 17mm 18mm;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+a { color: inherit; text-decoration: none; }
+
+p, ul { margin: 0; }
+
+/* ---- Header ---------------------------------------------------------------- */
+
+.cv-head {
+  text-align: center;
+  padding-bottom: 4pt;
+}
+
+.cv-head h1 {
+  margin: 0;
+  font-size: 22pt;
+  line-height: 1.1;
+}
+
+.cv-title {
+  margin-top: 3pt;
+  font-size: 11pt;
+  font-style: italic;
+  color: var(--ink-2);
+}
+
+.contacts {
+  margin-top: 4pt;
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.contacts + .contacts { margin-top: 0; }
+
+.sep { padding: 0 0.6em; }
+
+/* No icons in print. */
+.icon { display: none; }
+
+/* ---- Sections ---------------------------------------------------------------- */
+
+.section { margin-top: 13pt; }
+
+.section-head { margin: 0 0 5pt; }
+
+.section-title {
+  margin: 0;
+  padding-bottom: 2pt;
+  border-bottom: 0.75pt solid var(--rule);
+  font-size: 12pt;
+  font-weight: 700;
+  break-after: avoid;
+}
+
+.kicker {
+  margin: 8pt 0 2pt;
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  break-after: avoid;
+}
+
+.section-head + .kicker { margin-top: 0; }
+
+.rows > * { padding: 2.5pt 0; }
+
+/* Content on the left, date on the right. */
+.item {
+  display: flex;
+  align-items: baseline;
+  gap: 14pt;
+  break-inside: avoid;
+}
+
+.item-main { flex: 1 1 auto; min-width: 0; }
+
+.date {
+  flex: none;
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.entry-title,
+.stack-title { font-weight: 700; }
+
+.entry-desc,
+.cv-summary {
+  color: var(--ink-2);
+  font-size: 9.5pt;
+}
+
+.entry-desc > * { margin: 0; }
+
+.bullets {
+  padding-left: 1.2em;
+}
+
+.bullets li { padding: 1pt 0; }
+
+/* Publications: hanging indent */
+.pub {
+  padding-left: 1.6em;
+  text-indent: -1.6em;
+  break-inside: avoid;
+}
+
+.pub-links {
+  margin-left: 0.4em;
+  font-family: var(--sans);
+  font-size: 8pt;
+  color: var(--muted);
+}
+
+.pub-links a + a { margin-left: 0.6em; }
+
+/* Skills: one row per category, "Methods: a, b, c", like the other sections */
+/* Short lists stay in one piece rather than splitting across pages. */
+.skills,
+.bullets { break-inside: avoid; }
+
+.skills > div { padding: 2.5pt 0; }
+
+.skills .kicker {
+  display: inline;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 10pt;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.skills .kicker::after { content: ": "; }
+
+.skills > div > div:not(.kicker) { display: inline; }
+
+.cv-interests .sep { color: var(--muted); }
+
+.cv-bio p + p { margin-top: 4pt; }
+
+.cv-updated {
+  margin-top: 16pt;
+  font-family: var(--sans);
+  font-size: 8pt;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* People and news rows, in case they are listed in params.cv.sections */
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3pt 14pt;
+}
+
+.person-name { font-weight: 700; }
+
+.news-row { display: flex; gap: 14pt; break-inside: avoid; }
+.news-date { flex: 0 0 auto; font-family: var(--sans); font-size: 8.5pt; color: var(--muted); }
+.news-title { margin: 0; font-size: 10pt; }

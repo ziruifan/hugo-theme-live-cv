@@ -9,13 +9,10 @@ portrait: images/portrait.jpg
 
 # Markdown. Separate paragraphs with a blank line.
 bio: >-
-  Evander Grimveil is a PhD candidate in the Department of Arcane Studies at the
-  Institute for Occult Sciences and Mysticism, specializing in advanced curse
-  mechanics, forbidden rituals and interdimensional entities. His research asks
-  where the ethical boundaries of high-level hexes lie, and how dark arts can be
-  practised responsibly. Evander holds a Master of Dark Arts and Esoteric
-  Knowledge from Sorcerum University and has been recognized for his
-  containment protocols for cursed objects.
+  Evander Grimveil is a PhD candidate in Arcane Studies at the Institute for
+  Occult Sciences and Mysticism. He studies curse mechanics, forbidden rituals
+  and interdimensional entities, asking how the dark arts can be practised
+  responsibly. He holds a master's degree from Sorcerum University.
 
 # Contacts (first line under the name) and links (second line) use the same fields, all optional:
 #   name  a label, shown as "name: text"; without text, the name is shown on its own

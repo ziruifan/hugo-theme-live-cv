@@ -1,10 +1,10 @@
 +++
-title = "The Dynamics of Forbidden Rites: Structural Analysis and Ethical Applications of High-Level Curse Mechanics"
+title = "The Dynamics of Forbidden Rites: Ethics of High-Level Curses"
 # Shorter title for breadcrumbs
 linkTitle = "The Dynamics of Forbidden Rites"
 date = 2024-09-01
 tags = ["Rites", "Ethics"]
-summary = "Can the most dangerous curses be rebuilt for protection and healing? Taking advanced hexes apart, piece by piece, suggests they can — under strict controls."
+summary = "Can the most dangerous curses be rebuilt for protection and healing? Taking them apart suggests they can."
 
 [params]
   main = true
@@ -12,9 +12,9 @@ summary = "Can the most dangerous curses be rebuilt for protection and healing? 
   end = "Present"
   collaborators = ["Morganna Elyndris", "Edrick Thornwell"]
   contributions = [
-    "Studied the ethical implications and potential restorative uses of high-level curses.",
-    "Developed new containment protocols for volatile curses, improving safety in dark magic deployment.",
-    "Investigated hex transmission, contributing to nullifying charms for curse suppression.",
+    "Mapped restorative uses of high-level curses.",
+    "Built safer curse containment.",
+    "Traced how hexes are transmitted.",
   ]
   publications = ["beyond2020", "hex2022", "shadow2023"]
 

@@ -1,10 +1,10 @@
 +++
-title = "Artifact Enchantment and Hex Containment: Innovations in Dark Relic Handling"
+title = "Artifact Enchantment: Innovations in Dark Relic Handling"
 # Shorter title for breadcrumbs
 linkTitle = "Artifact Enchantment"
 date = 2021-12-01
 tags = ["Artifacts"]
-summary = "Containment methods for volatile, hex-bound relics, and why their stability depends on the magic around them."
+summary = "Containment methods for volatile relics, and how nearby magic unsettles them."
 
 [params]
   start = 2021

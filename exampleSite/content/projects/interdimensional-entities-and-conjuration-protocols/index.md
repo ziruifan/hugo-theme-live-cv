@@ -1,10 +1,10 @@
 +++
-title = "Interdimensional Entities and Conjuration Protocols: Ethical Control and Containment of Dark Summons"
+title = "Interdimensional Entities: Ethical Control of Dark Summons"
 # Shorter title for breadcrumbs
 linkTitle = "Interdimensional Entities"
 date = 2023-06-01
 tags = ["Summoning", "Ethics"]
-summary = "Safer conjuration environments, and a framework that balances control of summoned beings with their autonomy."
+summary = "Safer conjuration environments, and a framework that balances control with autonomy."
 
 [params]
   main = false

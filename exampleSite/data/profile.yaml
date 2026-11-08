@@ -19,7 +19,7 @@ bio: >-
 
 # Contacts (first line under the name) and links (second line) use the same fields, all optional:
 #   name  a label, shown as "name: text"; without text, the name is shown on its own
-#   icon  email, phone, location, website, link, orcid, linkedin, github, google-scholar,
+#   icon  email, phone, location, website, link, orcid, linkedin, youtube, github, google-scholar,
 #         or the name of your own assets/icons/<name>.svg
 #   text  the value; becomes the link when there is a url
 #   url   where the item links to

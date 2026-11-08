@@ -5,7 +5,7 @@
   {{- with resources.Get (printf "icons/%s.svg" .) }}
     {{- $out = printf `<span class="icon" aria-hidden="true">%s</span>` (strings.TrimSpace .Content) }}
   {{- else }}
-    {{- warnf "Live CV: icon %q not found; add assets/icons/%s.svg or use one of: email, phone, location, website, link, orcid, linkedin, github, google-scholar" . . }}
+    {{- warnf "Live CV: icon %q not found; add assets/icons/%s.svg or use one of: email, phone, location, website, link, orcid, linkedin, youtube, github, google-scholar" . . }}
   {{- end }}
 {{- end }}
 {{- return ($out | safeHTML) -}}

@@ -145,7 +145,7 @@ links:                          # second line, same fields as contacts
 
 **Contacts and links** use the same fields, all optional: `name` (a label, shown as "name: text"), `icon`, `text` (the value) and `url`. With a `url`, the text becomes the link; without `text`, the name is shown on its own and becomes the link. A contact can also be a plain Markdown string.
 
-**Icons.** Contacts and links can show a small solid icon before them with `icon:`. The theme includes `email`, `phone`, `location`, `website`, `link`, `orcid`, `linkedin`, `github` and `google-scholar`. To use another one, put an SVG at `assets/icons/<name>.svg` in your site and use its name; use a solid (filled) icon to match the set, and give it `fill="currentColor"` so it takes the text colour. The GitHub and Google Scholar marks come from [Simple Icons](https://simpleicons.org) (CC0) and are trademarks of their owners.
+**Icons.** Contacts and links can show a small solid icon before them with `icon:`. The theme includes `email`, `phone`, `location`, `website`, `link`, `orcid`, `linkedin`, `youtube`, `github` and `google-scholar`. To use another one, put an SVG at `assets/icons/<name>.svg` in your site and use its name; use a solid (filled) icon to match the set, and give it `fill="currentColor"` so it takes the text colour. The GitHub and Google Scholar marks come from [Simple Icons](https://simpleicons.org) (CC0); they and the YouTube mark are trademarks of their owners.
 
 **Separators.** Contacts and links are separated by `·`. Change it with `contactSeparator` in `[params]`, e.g. `contactSeparator = '|'`, or `contactSeparator = ''` for spacing only.
 

@@ -147,6 +147,8 @@ links:                          # second line, same fields as contacts
 
 **Icons.** Contacts and links can show a small solid icon before them with `icon:`. The theme includes `email`, `phone`, `location`, `website`, `link`, `orcid`, `linkedin`, `youtube`, `github` and `google-scholar`. To use another one, put an SVG at `assets/icons/<name>.svg` in your site and use its name; use a solid (filled) icon to match the set, and give it `fill="currentColor"` so it takes the text colour. The GitHub and Google Scholar marks come from [Simple Icons](https://simpleicons.org) (CC0); they and the YouTube mark are trademarks of their owners.
 
+**Icons instead of names.** On the web page, contacts and links that have an icon show the icon instead of their name, so `name: ORCID` with `icon: orcid` appears as the ORCID icon and the number. The name is kept for screen readers, and for an item with only a name, its icon becomes the link. The printable CV and the PDF have no icons, so they always show the names. To show names and icons together, set `hideContactNames = false` in `[params]`.
+
 **Separators.** Contacts and links are separated by `·`. Change it with `contactSeparator` in `[params]`, e.g. `contactSeparator = '|'`, or `contactSeparator = ''` for spacing only.
 
 ## CV sections

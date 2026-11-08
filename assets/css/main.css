@@ -228,6 +228,19 @@ img { max-width: 100%; height: auto; }
 
 .contacts .sep { padding: 0 0.75em; }
 
+/* params.hideContactNames: items with an icon show it instead of their name on the web page.
+   The name stays available to screen readers; the printable CV shows it as usual. */
+.contacts--icons .contact--icon .contact-name {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.contacts--icons .contact--icon a > .icon svg { margin-right: 0; }
+
 /* Optional icons before contacts and links (and anywhere else .icon is used) */
 .icon svg {
   display: inline-block;

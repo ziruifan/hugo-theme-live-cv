@@ -20,6 +20,11 @@
   # Use '' for spacing only.
   contactSeparator = '·'
 
+  # Contacts and links with an icon show the icon instead of their name ("ORCID:") on the
+  # web page; the printable CV and the PDF, which have no icons, show the names.
+  # Set to false to show both.
+  hideContactNames = true
+
   # "Top" and "Bottom" links in the margin right of the page (wide screens only).
   scrollButtons = true
 

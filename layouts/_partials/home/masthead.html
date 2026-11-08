@@ -17,7 +17,7 @@
   {{- /* Contacts and links share the same fields (name, icon, text, url); see contact-item.html. */ -}}
   {{- range $line := slice (dict "items" $p.contacts "class" "contacts") (dict "items" $p.links "class" "contacts contacts--links") }}
     {{- with $line.items }}
-  <p class="{{ $line.class }}">
+  <p class="{{ $line.class }}{{ if site.Params.hideContactNames }} contacts--icons{{ end }}">
       {{- range $i, $c := . }}
         {{- if $i }}<span class="sep" aria-hidden="true">{{ $sep }}</span>{{ end }}
         {{- partial "contact-item.html" $c }}

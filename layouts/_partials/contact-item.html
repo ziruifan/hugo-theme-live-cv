@@ -3,15 +3,24 @@
          icon  optional icon name (see assets/icons)
          text  the value, e.g. an email address or handle ("info" is accepted too)
          url   optional link; the text (or the name, when there is no text) becomes the link
-       A plain string is shown as Markdown. */ -}}
+       A plain string is shown as Markdown.
+       The name is wrapped in .contact-name so that, with params.hideContactNames, the web page
+       can show the icon in its place (see main.css); the printable CV always shows it. */ -}}
 {{- $c := . }}
 {{- if reflect.IsMap $c }}
   {{- $text := $c.text | default $c.info }}
-  {{- $link := $text | default $c.name }}
-<span class="contact">{{ partial "icon.html" $c.icon }}
-  {{- if and $text $c.name }}{{ $c.name }}: {{ end }}
-  {{- /* Plain text inside links: Markdown would turn an email address into a second, nested link. */ -}}
-  {{- with $c.url }}<a href="{{ . | safeURL }}">{{ $link }}</a>{{ else }}{{ $link | markdownify }}{{ end -}}
+  {{- $icon := partial "icon.html" $c.icon }}
+<span class="contact{{ if $icon }} contact--icon{{ end }}">
+  {{- if $text }}
+    {{- $icon }}
+    {{- with $c.name }}<span class="contact-name">{{ . }}: </span>{{ end }}
+    {{- /* Plain text inside links: Markdown would turn an email address into a second, nested link. */ -}}
+    {{- with $c.url }}<a href="{{ . | safeURL }}">{{ $text }}</a>{{ else }}{{ $text | markdownify }}{{ end }}
+  {{- else }}
+    {{- /* Only a name: it is the link, so the icon goes inside the link too. */ -}}
+    {{- with $c.url }}<a href="{{ . | safeURL }}">{{ $icon }}<span class="contact-name">{{ $c.name }}</span></a>
+    {{- else }}{{ $icon }}<span class="contact-name">{{ $c.name | markdownify }}</span>{{ end }}
+  {{- end -}}
 </span>
 {{- else }}
 <span class="contact">{{ $c | markdownify }}</span>

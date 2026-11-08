@@ -1,5 +1,6 @@
-{{- /* Projects on the printable CV: title and period, then the one-line summary. No photos.
-       Main projects come first, as on the home page. Context: dict "class", "title", "anchor". */ -}}
+{{- /* Projects on the printable CV: title and period, the summary, then the contributions as
+       bullets (like main projects on the home page). No photos. Main projects come first, as on
+       the home page. Context: dict "class", "title", "anchor". */ -}}
 {{- $ctx := . }}
 {{- with site.GetPage "/projects" }}
   {{- with .RegularPages }}
@@ -12,6 +13,14 @@
         <div class="entry-title"><a href="{{ .Permalink }}">{{ .Title }}</a></div>
         {{- with partial "func/dek.html" (dict "page" . "auto" true) }}
         <div class="cv-summary">{{ . }}</div>
+        {{- end }}
+        {{- $p := . }}
+        {{- with .Params.contributions }}
+        <ul class="cv-points">
+          {{- range . }}
+          <li>{{ $p.RenderString . }}</li>
+          {{- end }}
+        </ul>
         {{- end }}
       </div>
       {{- with partial "func/period.html" .Params }}

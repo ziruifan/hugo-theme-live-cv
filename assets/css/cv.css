@@ -153,11 +153,36 @@ p, ul { margin: 0; }
 
 .entry-desc > * { margin: 0; }
 
-.bullets {
-  padding-left: 1.2em;
+/* Project contributions */
+.cv-points {
+  margin-top: 1.5pt;
+  color: var(--ink-2);
+  font-size: 9.5pt;
 }
 
 .bullets li { padding: 1pt 0; }
+
+/* Bullets drawn inside each item (hanging indent): Chrome clips the usual outside list
+   markers when printing items in a flex row, as in the projects list. */
+.bullets,
+.cv-points {
+  padding-left: 0;
+  list-style: none;
+}
+
+.bullets li,
+.cv-points li {
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+}
+
+.bullets li::before,
+.cv-points li::before {
+  content: "•";
+  display: inline-block;
+  width: 1.2em;
+  text-indent: 0;
+}
 
 /* Publications: hanging indent */
 .pub {

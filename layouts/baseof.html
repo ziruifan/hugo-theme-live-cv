@@ -8,6 +8,9 @@
   <div class="desk" id="top">
     <div class="frame">
       {{ partial "topbar.html" . }}
+      {{- /* The white page with the side nav and scroll buttons. A layout can replace the whole
+             sheet by defining "sheet" (the 404 page does); otherwise it fills in "main". */ -}}
+      {{ block "sheet" . }}
       <div class="sheet">
         {{- partial "navbar.html" . }}
         <main class="paper">
@@ -16,6 +19,7 @@
         </main>
         {{- partial "scroll-buttons.html" . }}
       </div>
+      {{ end }}
       {{ partial "colophon.html" . }}
     </div>
     <div id="bottom"></div>

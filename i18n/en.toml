@@ -46,11 +46,3 @@ poweredBy = 'Powered by {{ .hugo }} & {{ .theme }}'
 
 # 404 page
 notFoundTitle = 'Error 404: Page Not Found'
-notFoundSalutation = 'Dear reader,'
-notFoundBody = 'We regret to inform you that your request to access this page has been rejected.'
-notFoundNext = 'Suggestions for next steps:'
-notFoundVerify = 'Verify the URL and attempt a resubmission.'
-notFoundHome = 'Return to the <a href="{{ . }}">homepage</a> to explore alternative sources.'
-notFoundAdmin = 'If you believe this is an error, consult the site administrator.'
-notFoundThanks = 'We appreciate your continued engagement and encourage further exploration.'
-notFoundSignoff = 'Sincerely,<br>The Editorial Board'

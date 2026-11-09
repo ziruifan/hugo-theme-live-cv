@@ -10,6 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
+<link rel="icon" href="{{ site.Params.favicon | default "favicon.ico" | relURL }}">
 <title>{{ $name }} – {{ i18n "cvTitle" }}</title>
 {{ partialCached "head/fonts.html" . }}
 {{- with resources.Get "css/cv.css" }}

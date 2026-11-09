@@ -3,16 +3,19 @@ title = "Warding Cartography: Mapping Protective Ley Lines Around Mysthaven"
 # Shorter title for breadcrumbs
 linkTitle = "Warding Cartography"
 date = 2024-05-01
-tags = ["Wards", "Fieldwork"]
+categories = ["Fieldwork"]  # the kind of work, shown above the title
+tags = ["Wards", "Cartography"]
 summary = "A survey of the old protective ley lines around the city, and where they have quietly failed."
 
 [params]
   start = 2022
   end = 2024
-  collaborators = ["Elara Nightshade"]
   contributions = [
     "Surveyed 140 km of coastal ley lines with resonance tuning forks.",
     "Published an open atlas of ward strength for local practitioners.",
+  ]
+  contributors = [
+    { name = "Elara Nightshade", contribution = "Co-led the coastal survey." },
   ]
 
   [params.cover]

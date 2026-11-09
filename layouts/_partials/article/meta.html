@@ -1,0 +1,13 @@
+{{- /* The line under an article's photo: its tags on the left, a date or period on the right.
+       Context dict: page, end (HTML for the right-hand side, optional). */ -}}
+{{- $tags := .page.GetTerms "tags" }}
+{{- if or $tags .end }}
+<div class="article-meta">
+  {{- with $tags }}
+  <span>{{ i18n "tagsLabel" }}: {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}</span>
+  {{- end }}
+  {{- with $.end }}
+  <span class="article-meta-end">{{ . }}</span>
+  {{- end }}
+</div>
+{{- end }}

@@ -2,7 +2,8 @@
 title = "{{ replace .File.ContentBaseName "-" " " | title }}"
 date = {{ .Date }}
 draft = true
-tags = []
+categories = []   # the kind of work, shown above the title, e.g. "Research" or "Fieldwork"
+tags = []         # shown under the photo on the project page
 
 # One or two sentences: the question the project asks and the short answer.
 summary = ""
@@ -12,9 +13,11 @@ summary = ""
   main = false
   start = {{ dateFormat "2006" .Date }}
   end = "Present"
-  collaborators = []
   # Key outcomes, shown as bullets on the projects list and under "Contributions".
   contributions = []
+  # People who worked on the project, and what they did:
+  #   { name = "Name", contribution = "What they did" }, or just "Name".
+  contributors = []
   # IDs from data/publications.yaml
   publications = []
 

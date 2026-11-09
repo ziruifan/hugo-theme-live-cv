@@ -1,7 +1,7 @@
 # Fields: name, url, group, role, affiliation
 # `group` splits the list under small headings, in order of first use. Headings follow
 # the count: write "Supervisor" and it becomes "Supervisors" when there are two.
-# Names listed under a project's `collaborators` are linked to the url given here.
+# Names listed under a project's `contributors` are linked to the url given here.
 - name: Morganna Elyndris
   group: Supervisor
   url: https://example.org/melyndris/

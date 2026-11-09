@@ -1,11 +1,11 @@
 {{- /* Main projects as full-width lead stories, side projects as cards a third of the width.
-       Context dict: pages, level (heading level), tags (tags in a lead's kicker), onPage (bool). */ -}}
+       Context dict: pages, level (heading level), labels (categories in a lead's label), onPage (bool). */ -}}
 {{- $ctx := . }}
 {{- $main := where .pages "Params.main" true }}
 {{- $side := where .pages "Params.main" "!=" true }}
 <div class="project-list{{ if .onPage }} project-list--page{{ end }}">
   {{- range $main }}
-  {{ partial "project/lead.html" (dict "page" . "level" $ctx.level "tags" $ctx.tags "class" (cond (eq $ctx.onPage true) "project-lead--page" "")) }}
+  {{ partial "project/lead.html" (dict "page" . "level" $ctx.level "labels" $ctx.labels "class" (cond (eq $ctx.onPage true) "project-lead--page" "")) }}
   {{- end }}
   {{- with $side }}
   <div class="project-cards">

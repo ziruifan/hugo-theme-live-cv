@@ -232,15 +232,19 @@ hugo new content/projects/my-project/index.md
 title = "Project Title, Written as a Headline"
 linkTitle = "Short Title"          # optional, used in breadcrumbs
 date = 2024-06-01                   # projects are ordered by weight, then date (newest first)
-tags = ["Topic"]                    # shown above the headline
+categories = ["Research"]           # the kind of work (Research, Fieldwork…), shown as "Project | Research"
+tags = ["Topic"]                    # shown under the photo on the project page
 summary = "One or two sentences: the question and the short answer."
 
 [params]
   main = true                       # a main project: full-width story with a large photo
   start = 2022
   end = "Present"
-  collaborators = ["Name", "Another Name"]   # linked if listed in data/people.yaml
   contributions = ["Key outcome one.", "Key outcome two."]
+  contributors = [                           # listed below Contributions; linked if in data/people.yaml
+    { name = "Name", contribution = "What they did" },
+    "Another Name",
+  ]
   publications = ["paper2024"]               # ids from data/publications.yaml
 
   [params.cover]                   # optional; cover.* or featured.* in the bundle is used by default

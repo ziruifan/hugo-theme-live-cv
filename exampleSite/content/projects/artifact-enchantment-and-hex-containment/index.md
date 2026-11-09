@@ -3,6 +3,7 @@ title = "Artifact Enchantment: Innovations in Dark Relic Handling"
 # Shorter title for breadcrumbs
 linkTitle = "Artifact Enchantment"
 date = 2021-12-01
+categories = ["Research"]  # the kind of work, shown above the title
 tags = ["Artifacts"]
 summary = "Containment methods for volatile relics, and how nearby magic unsettles them."
 

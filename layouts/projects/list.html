@@ -4,6 +4,6 @@
 <div class="page-intro">{{ . }}</div>
   {{- end }}
   {{- with .RegularPages }}
-  {{ partial "project/list.html" (dict "pages" (partial "func/projects-ordered.html" .) "level" 2 "tags" 2 "onPage" true) }}
+  {{ partial "project/list.html" (dict "pages" (partial "func/projects-ordered.html" .) "level" 2 "labels" 2 "onPage" true) }}
   {{- end }}
 {{ end }}

@@ -1,9 +1,9 @@
-{{- /* Lead story. Context dict: page, level (2 or 3), tags (kicker tag count), class. */ -}}
+{{- /* Lead story. Context dict: page, level (2 or 3), labels (number of categories in the label), class. */ -}}
 {{- $p := .page }}
 {{- $cover := partial "func/cover.html" $p }}
 <article class="project-lead{{ with .class }} {{ . }}{{ end }}">
   <div class="project-lead-text">
-    {{ partial "kicker.html" (dict "page" $p "limit" .tags) }}
+    {{ partial "kicker.html" (dict "page" $p "limit" .labels) }}
     {{- if eq .level 2 }}
     <h2 class="project-lead-title"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
     {{- else }}

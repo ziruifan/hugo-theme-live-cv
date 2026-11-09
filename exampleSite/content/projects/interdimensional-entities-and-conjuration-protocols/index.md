@@ -3,6 +3,7 @@ title = "Interdimensional Entities: Ethical Control of Dark Summons"
 # Shorter title for breadcrumbs
 linkTitle = "Interdimensional Entities"
 date = 2023-06-01
+categories = ["Research"]  # the kind of work, shown above the title
 tags = ["Summoning", "Ethics"]
 summary = "Safer conjuration environments, and a framework that balances control with autonomy."
 
@@ -10,10 +11,13 @@ summary = "Safer conjuration environments, and a framework that balances control
   main = false
   start = 2020
   end = 2023
-  collaborators = ["Selene Varrow", "Morganna Elyndris"]
   contributions = [
     "Created protocols for stable conjuration environments and containment fields for summoned entities.",
     "Explored ethical frameworks for responsible summoning, balancing control with entity autonomy.",
+  ]
+  contributors = [
+    { name = "Selene Varrow", contribution = "Co-designed the containment fields." },
+    { name = "Morganna Elyndris", contribution = "Supervised the project." },
   ]
   publications = ["veiled2021", "conjured2023"]
 

@@ -1,19 +1,16 @@
 {{ define "main" }}
   {{- partial "nameplate.html" (dict "page" .) }}
 <article>
-  {{ partial "article/header.html" (dict "page" . "link" true) }}
+  {{- /* Label: the section's name, then the category, e.g. "News | Post". */ -}}
+  {{- $section := "" }}
+  {{- with .CurrentSection }}{{ if not .IsHome }}{{ $section = partial "func/section-title.html" . }}{{ end }}{{ end }}
+  {{ partial "article/header.html" (dict "page" . "prefix" $section "link" true) }}
   <div class="article-body">
-    {{- $tags := .GetTerms "tags" }}
-    {{- if or $tags (not .Date.IsZero) }}
-    <div class="article-meta">
-      {{- with $tags }}
-      <span>{{ i18n "tagsLabel" }}: {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}</span>
-      {{- end }}
-      {{- if not .Date.IsZero }}
-      <span class="article-meta-end"><time datetime="{{ .Date | time.Format "2006-01-02" }}">{{ .Date | time.Format ":date_long" }}</time></span>
-      {{- end }}
-    </div>
+    {{- $date := "" }}
+    {{- if not .Date.IsZero }}
+      {{- $date = printf `<time datetime="%s">%s</time>` (.Date | time.Format "2006-01-02") (.Date | time.Format ":date_long") | safeHTML }}
     {{- end }}
+    {{ partial "article/meta.html" (dict "page" . "end" $date) }}
     <div class="prose">
       {{ .Content }}
     </div>

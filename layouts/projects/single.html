@@ -1,20 +1,9 @@
 {{ define "main" }}
   {{- partial "nameplate.html" (dict "page" .) }}
 <article>
-  {{ partial "article/header.html" (dict "page" . "prefix" (i18n "project") "limit" 2 "link" true) }}
+  {{ partial "article/header.html" (dict "page" . "prefix" (i18n "project") "link" true) }}
   <div class="article-body">
-    {{- $collab := partial "func/collaborators.html" . }}
-    {{- $period := partial "func/period.html" .Params }}
-    {{- if or $collab $period }}
-    <div class="article-meta">
-      {{- with $collab }}
-      <span>{{ i18n "collaboratorsLabel" }}: {{ . }}</span>
-      {{- end }}
-      {{- with $period }}
-      <span class="article-meta-end">{{ . }}</span>
-      {{- end }}
-    </div>
-    {{- end }}
+    {{ partial "article/meta.html" (dict "page" . "end" (partial "func/period.html" .Params)) }}
 
     <div class="prose">
       {{ .Content }}
@@ -27,6 +16,14 @@
       <li>{{ $.RenderString . }}</li>
       {{- end }}
     </ul>
+    {{- end }}
+
+    {{- with partial "func/contributors.html" . }}
+    {{- /* Same layout as the People section on the home page, with each contribution under the name. */ -}}
+    <h2 class="article-heading">{{ i18n "contributors" }}</h2>
+    <div class="article-people">
+      {{ partial "sections/people.html" (dict "items" .) }}
+    </div>
     {{- end }}
 
     {{- with .Params.publications }}

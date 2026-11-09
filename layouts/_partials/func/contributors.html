@@ -1,0 +1,15 @@
+{{- /* Contributors to a project (params.contributors).
+       Each entry is a name, or a map with name, contribution and url. Returns a list of dicts
+       with name, url and detail (the contribution), for sections/people.html. People listed in
+       data/people.* supply the url when the page doesn't. Context: the page. */ -}}
+{{- $people := (partial "func/items.html" site.Data.people).items }}
+{{- $out := slice }}
+{{- range .Params.contributors }}
+  {{- $person := dict "name" . }}
+  {{- if reflect.IsMap . }}{{ $person = dict "name" .name "url" .url "detail" .contribution }}{{ end }}
+  {{- if not $person.url }}
+    {{- range $people }}{{ if and (eq .name $person.name) .url }}{{ $person = merge $person (dict "url" .url) }}{{ end }}{{ end }}
+  {{- end }}
+  {{- $out = $out | append $person }}
+{{- end }}
+{{- return $out -}}

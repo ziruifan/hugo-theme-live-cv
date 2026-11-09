@@ -48,6 +48,9 @@
 
 html {
   background: var(--desk);
+  /* Always keep room for the scrollbar, so short pages (no scrollbar) and long ones
+     are centred in the same width and don't shift sideways between pages. */
+  scrollbar-gutter: stable;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -108,7 +111,6 @@ img { max-width: 100%; height: auto; }
   text-transform: uppercase;
 }
 
-
 /* Dates and other secondary metadata */
 .meta {
   font-family: var(--sans);
@@ -130,7 +132,7 @@ img { max-width: 100%; height: auto; }
 }
 
 .topbar {
-  padding: 40px clamp(16px, 3vw, 0px) 28px;
+  padding: 40px clamp(16px, 3vw, 0px) 24px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -140,8 +142,6 @@ img { max-width: 100%; height: auto; }
   color: var(--chrome);
 }
 
-.topbar--home { padding-bottom: 12px; }
-
 .crumbs { min-width: 0; }
 .crumbs .sep { padding: 0 0.6em; }
 
@@ -150,7 +150,6 @@ img { max-width: 100%; height: auto; }
   gap: 24px;
   margin-left: auto;
 }
-
 
 .paper {
   color-scheme: light;
@@ -172,7 +171,6 @@ img { max-width: 100%; height: auto; }
 }
 
 .colophon-credit { margin-left: auto; }
-
 
 /* A message on the background instead of a page (the 404 page) */
 .desk-message {
@@ -994,7 +992,6 @@ img { max-width: 100%; height: auto; }
   .frame { max-width: none; padding: 0; }
   .paper { box-shadow: none; padding: 0; }
   .topbar, .colophon, .section-more, .navbar, .scroll-buttons { display: none; }
-
 
   .item, .pub, .news-row, .project-card, .mini-card, .people-grid > div {
     break-inside: avoid;

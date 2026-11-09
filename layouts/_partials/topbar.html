@@ -1,5 +1,5 @@
 {{- $name := partialCached "func/name.html" . }}
-<div class="topbar{{ if .IsHome }} topbar--home{{ end }}">
+<div class="topbar">
   <nav class="crumbs" aria-label="Breadcrumb">
     {{- if .IsHome }}
     <span>{{ $name }}</span>

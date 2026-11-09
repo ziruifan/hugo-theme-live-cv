@@ -15,6 +15,7 @@ summary = "A survey of the old protective ley lines around the city, and where t
     "Published an open atlas of ward strength for local practitioners.",
   ]
   contributors = [
+    { name = "Evander Grimveil", contribution = "Co-led the survey and built the atlas." },
     { name = "Elara Nightshade", contribution = "Co-led the coastal survey." },
   ]
 

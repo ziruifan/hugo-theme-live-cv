@@ -15,6 +15,9 @@ summary = "Containment methods for volatile relics, and how nearby magic unsettl
     "Analyzed stability factors affecting cursed artifacts, optimizing handling and transport procedures.",
     "Studied interactions between cursed artifacts and external magical energies to guide safe storage.",
   ]
+  contributors = [
+    { name = "Evander Grimveil", contribution = "Developed and tested the containment protocols." },
+  ]
   publications = ["securing2021"]
 
   [params.cover]

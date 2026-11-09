@@ -16,6 +16,7 @@ summary = "Safer conjuration environments, and a framework that balances control
     "Explored ethical frameworks for responsible summoning, balancing control with entity autonomy.",
   ]
   contributors = [
+    { name = "Evander Grimveil", contribution = "Led the project and wrote the conjuration protocols." },
     { name = "Selene Varrow", contribution = "Co-designed the containment fields." },
     { name = "Morganna Elyndris", contribution = "Supervised the project." },
   ]

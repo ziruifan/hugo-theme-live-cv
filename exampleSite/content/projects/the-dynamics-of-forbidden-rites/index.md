@@ -17,6 +17,7 @@ summary = "Can the most dangerous curses be rebuilt for protection and healing? 
     "Traced how hexes are transmitted.",
   ]
   contributors = [
+    { name = "Evander Grimveil", contribution = "Led the project and designed the curse analyses." },
     { name = "Morganna Elyndris", contribution = "Supervised the project and its ethics review." },
     { name = "Edrick Thornwell", contribution = "Ran the curse-dissection experiments." },
   ]
